@@ -6,15 +6,12 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 16:20:38 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/04 20:47:00 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/04 22:33:57 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-# include <string.h>
-# include <assert.h>
-# include <stdio.h>
-# include <ctype.h>
+
 
 void    ft_isalpha_assert(void)
 {
@@ -124,6 +121,46 @@ void    ft_bzero_assert(void)
     printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
 }
 
+void    ft_strchr_assert(void)
+{
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    char *str = "hello_world";
+
+    assert(ft_strchr(str, 'l') == &str[2]);
+    assert(ft_strchr(str, 'l') == strchr(str, 'l'));
+    assert(ft_strchr(str, 'z') == strchr(str, 'z'));
+    assert(ft_strchr(str, '\0') == strchr(str, '\0'));
+    assert(ft_strchr(str, -1) == strchr(str, -1));
+    str = "";
+    assert(ft_strchr(str, 'l') == NULL);
+    assert(ft_strchr(str, 'l') == strchr(str, 'l'));
+    assert(ft_strchr(str, 'z') == strchr(str, 'z'));
+    assert(ft_strchr(str, '\0') == strchr(str, '\0'));
+    assert(ft_strchr(str, -1) == strchr(str, -1));
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
+
+}
+
+void    ft_strrchr_assert(void)
+{
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    char *str = "hello_world";
+
+    assert(ft_strrchr(str, 'l') == &str[9]);
+    assert(ft_strrchr(str, 'l') == strrchr(str, 'l'));
+    assert(ft_strrchr(str, 'z') == strrchr(str, 'z'));
+    assert(ft_strrchr(str, '\0') == strrchr(str, '\0'));
+    assert(ft_strrchr(str, -1) == strrchr(str, -1));
+    str = "";
+    assert(ft_strrchr(str, 'l') == NULL);
+    assert(ft_strrchr(str, 'l') == strrchr(str, 'l'));
+    assert(ft_strrchr(str, 'z') == strrchr(str, 'z'));
+    assert(ft_strrchr(str, '\0') == strrchr(str, '\0'));
+    assert(ft_strrchr(str, -1) == strrchr(str, -1));
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
+
+}
+
 int main(void)
 {
     ft_isalpha_assert();
@@ -134,5 +171,13 @@ int main(void)
     ft_strlen_assert();
     ft_memset_assert();
     ft_bzero_assert();
+
+    //ft_memcpy_assert();
+    //ft_memmove_assert();
+    //ft_ft_toupper_assert();
+    //ft_ft_tolower_assert();
+    
+    ft_strchr_assert();
+    ft_strrchr_assert();
     return (0);
 }

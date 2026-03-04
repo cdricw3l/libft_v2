@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 20:51:42 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/04 20:57:53 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/04 21:51:16 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char		*dest_ptr;
 	const unsigned char	*src_ptr;
 
+	if (!dest && !src)
+		return (NULL);
 	i = 0;
 	src_ptr = src;
 	dest_ptr = dest;
