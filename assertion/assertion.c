@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 16:20:38 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/04 20:19:40 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/04 20:47:00 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,43 @@ void    ft_strlen_assert(void)
     printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
 }
 
+void    ft_memset_assert(void)
+{
+    char buffer1[10];
+    char buffer2[10];
+
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    ft_memset(buffer1, 0, 10);
+    memset(buffer2, 0, 10);
+    assert(!memcmp(buffer1, buffer2, 10));
+    ft_memset(buffer1, 97, 10);
+    memset(buffer2, 97, 10);
+    assert(!memcmp(buffer1, buffer2, 10));
+    memset(buffer2, 0, 0);
+    ft_memset(buffer1, 0, 0);
+    assert(!memcmp(buffer1, buffer2, 0));
+    assert(ft_memset(buffer1, 0, 10) == memset(buffer1, 0, 10));
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
+}
+
+void    ft_bzero_assert(void)
+{
+    char buffer1[10];
+    char buffer2[10];
+
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    ft_bzero(buffer1, 10);
+    bzero(buffer2, 10);
+    assert(!memcmp(buffer1, buffer2, 10));
+    ft_bzero(buffer1, 5);
+    bzero(buffer2, 5);
+    assert(!memcmp(buffer1, buffer2, 5));
+    ft_bzero(buffer1, 1);
+    bzero(buffer2, 1);
+    assert(!memcmp(buffer1, buffer2, 1));
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
+}
+
 int main(void)
 {
     ft_isalpha_assert();
@@ -95,5 +132,7 @@ int main(void)
     ft_isascii_assert();
     ft_isprint_assert();
     ft_strlen_assert();
+    ft_memset_assert();
+    ft_bzero_assert();
     return (0);
 }
