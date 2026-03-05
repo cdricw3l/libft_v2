@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/04 22:23:51 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/05 22:06:16 by cdric.b          ###   ########.fr       */
+/*   Created: 2026/03/05 21:29:42 by cdric.b           #+#    #+#             */
+/*   Updated: 2026/03/05 22:03:58 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const char	*ptr;
-	size_t		len;
+	size_t	i;
 
-	ptr = s;
-	len = ft_strlen(s);
-	if (ptr[len] == (unsigned char)c)
-		return (&((char *)ptr)[len]);
-	while (len > 0)
+	if (n == 0)
+		return (0);
+	i = 0;
+	while (i < n)
 	{
-		if (ptr[len - 1] == (unsigned char)c)
-			return (&((char *)ptr)[len - 1]);
-		len--;
+		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
+			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+		i++;
 	}
-	return (NULL);
+	return (0);
 }

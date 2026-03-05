@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 16:20:38 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/05 17:35:01 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/05 22:16:44 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,25 +215,29 @@ void    ft_strlcpy_assert(void)
 
 }
 
-int test(char *str)
-{
-    printf("addres %p\n", str);
-    str[0] = str[0] - 32;return (0);
-}
-
 void    ft_strncmp_assert(void)
 {
     printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
-    
-    assert(ft_strncmp("hello", "hello", 100) == strncmp("hello", "hello", 100));
-    
     char *str_1 = "";
     char *str_2 = "hello_berlin";
-    test("hello");
+    char *str_3 = "hello_berlin";
+    char *str_4 = "hello_berlin";
+    char *str_5 = "hello_berlin";
+    char *str_6 = "                         hello_berlin";
+    char str_7[] = "hello_berlin";
+    printf("hehe\n");
+    str_7[0] = -42;
+    printf("voici %d\n", strncmp(str_7,str_6, 5));
+    char *str_8 = "hello_berlim";
+    assert(ft_strncmp("hello", "hello", 100) == strncmp("hello", "hello", 100));
     assert(ft_strncmp(str_1, str_2, 100) == strncmp(str_1, str_2, 100));
-    
+    assert(ft_strncmp(str_1, str_2, 0) == strncmp(str_1, str_2, 0));
+    assert(ft_strncmp(str_1, str_2, 1) == strncmp(str_1, str_2, 1));
+    assert(ft_strncmp(str_3, str_4, ft_strlen(str_3)) == strncmp(str_3, str_4, ft_strlen(str_3)));
+    assert(ft_strncmp(str_3, str_4, ft_strlen(str_3) + 100) == strncmp(str_3, str_4, ft_strlen(str_3) + 100));
+    assert(ft_strncmp(str_5, str_6, ft_strlen(str_5)) == strncmp(str_5, str_6, ft_strlen(str_5)));
+    assert(ft_strncmp(str_7, str_8, ft_strlen(str_7)) == strncmp(str_7, str_8, ft_strlen(str_7)));
     printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
-
 }
 
 int main(void)
@@ -251,6 +255,8 @@ int main(void)
     //ft_memmove_assert();
     //ft_ft_toupper_assert();
     //ft_ft_tolower_assert();
+    //ft_ft_memchr();
+    //ft_memcmp();
     
     ft_strchr_assert();
     ft_strrchr_assert();

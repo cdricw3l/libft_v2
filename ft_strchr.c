@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 22:06:04 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/05 16:57:41 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/05 22:05:16 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	*ft_strchr(const char *s, int c)
 	ptr = s;
 	while (*ptr)
 	{
-		if (*ptr == c)
+		if (*ptr == (unsigned char)c)
 			return ((char *)ptr);
 		ptr++;
 	}
-	if (*ptr == c)
+	if (*ptr == (unsigned char)c)
 		return ((char *)ptr);
 	return (NULL);
 }

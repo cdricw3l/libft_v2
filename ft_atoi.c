@@ -1,31 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/04 22:23:51 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/05 22:06:16 by cdric.b          ###   ########.fr       */
+/*   Created: 2026/03/05 21:48:47 by cdric.b           #+#    #+#             */
+/*   Updated: 2026/03/05 21:54:32 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+static int	ft_isspace(char c)
 {
-	const char	*ptr;
-	size_t		len;
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
+}
 
-	ptr = s;
-	len = ft_strlen(s);
-	if (ptr[len] == (unsigned char)c)
-		return (&((char *)ptr)[len]);
-	while (len > 0)
+int	ft_atoi(const char *str)
+{
+	int	result;
+	int	minus;
+
+	minus = 0;
+	result = 0;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == 43 || *str == 45)
 	{
-		if (ptr[len - 1] == (unsigned char)c)
-			return (&((char *)ptr)[len - 1]);
-		len--;
+		if (*str == 45)
+			minus = 1;
+		str++;
 	}
-	return (NULL);
+	while (ft_isdigit(*str))
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	if (minus)
+		return (result * -1);
+	return (result);
 }
