@@ -28,7 +28,7 @@ as: clean ${OBJETS_ASSERT} ${OBJETS_SRCS}
 	${CC} ${GFLAGS} ${OBJETS_ASSERT} -o ${NAME_ASSERT}
 	./${NAME_ASSERT}
 
-git:
+git: fclean
 	git add .
 	git commit -m ${COM}
 	git push origin ${shell git branch --show-current}
