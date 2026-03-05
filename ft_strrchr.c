@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 22:23:51 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/04 22:32:19 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/05 16:58:12 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	const char	*ptr;
-	size_t      len;
+	size_t		len;
 
 	ptr = s;
 	len = ft_strlen(s);

@@ -19,6 +19,7 @@ ${NAME}: ${OBJETS_SRCS}
 
 clean:
 	rm -f ${OBJETS_SRCS} ${OBJETS_ASSERT}
+	rm -rf test*
 
 fclean: clean
 	rm -f ${NAME} ${NAME_ASSERT}

@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/04 22:01:19 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/05 16:58:30 by cdric.b          ###   ########.fr       */
+/*   Created: 2026/03/05 15:55:35 by cdric.b           #+#    #+#             */
+/*   Updated: 2026/03/05 16:57:25 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
+#include "libft.h"
+
+size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
 {
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	return (c);
+	size_t	i;
+
+	i = 0;
+	while (src[i] && i < (dstsize - 1))
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	while (src[i])
+		i++;
+	return (i);
 }

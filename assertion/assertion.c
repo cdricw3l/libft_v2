@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 16:20:38 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/04 22:33:57 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/05 17:35:01 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,81 @@ void    ft_strrchr_assert(void)
 
 }
 
+void    ft_strlcpy_assert(void)
+{
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    
+    char buffer_1[10] = {0};
+    char buffer_2[10] = {0};
+    char *str = "hello_berlin";
+
+    size_t c1 = strlcpy(buffer_1, str, 10);
+    size_t c2 = ft_strlcpy(buffer_2, str, 10);
+
+    assert(c1 == c2);
+    assert(!strncmp(buffer_1,buffer_2, 10));
+    ft_bzero(buffer_1, 10);
+    ft_bzero(buffer_2, 10);
+
+    c1 = strlcpy(buffer_1, str, 5);
+    c2 = ft_strlcpy(buffer_2, str, 5);
+    assert(c1 == c2);
+    assert(!strncmp(buffer_1,buffer_2, 5));
+
+    char buffer_3[100];
+    char buffer_4[100];
+
+    ft_bzero(buffer_3, 100);
+    ft_bzero(buffer_4, 100);
+
+    c1 = strlcpy(buffer_3, str, 100);
+    c2 = ft_strlcpy(buffer_4, str, 100);
+    assert(c1 == c2);
+    assert(!strncmp(buffer_3,buffer_4, 100));
+    ft_bzero(buffer_3, 100);
+    ft_bzero(buffer_4, 100);
+    
+    char *str_2 = "";
+    c1 = strlcpy(buffer_3, str_2, 100);
+    c2 = ft_strlcpy(buffer_4, str_2, 100);
+    assert(c1 == c2);
+    assert(buffer_3[0] == '\0' && buffer_4[0] == '\0');
+    assert(!strncmp(buffer_3,buffer_4, 100));
+
+    ft_bzero(buffer_3, 100);
+    ft_bzero(buffer_4, 100);
+    
+    char *str_3 = "hello berlin commnet ca va?";
+    c1 = strlcpy(buffer_3, str_3, 0);
+    c2 = ft_strlcpy(buffer_4, str_3, 0);
+    assert(c1 == c2);
+    assert(!strncmp(buffer_3,buffer_4, 0));
+    
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
+
+}
+
+int test(char *str)
+{
+    printf("addres %p\n", str);
+    str[0] = str[0] - 32;return (0);
+}
+
+void    ft_strncmp_assert(void)
+{
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    
+    assert(ft_strncmp("hello", "hello", 100) == strncmp("hello", "hello", 100));
+    
+    char *str_1 = "";
+    char *str_2 = "hello_berlin";
+    test("hello");
+    assert(ft_strncmp(str_1, str_2, 100) == strncmp(str_1, str_2, 100));
+    
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
+
+}
+
 int main(void)
 {
     ft_isalpha_assert();
@@ -179,5 +254,7 @@ int main(void)
     
     ft_strchr_assert();
     ft_strrchr_assert();
+    ft_strlcpy_assert();
+    ft_strncmp_assert();
     return (0);
 }
