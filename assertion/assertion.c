@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 16:20:38 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/05 22:16:44 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/06 17:11:54 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,7 +210,14 @@ void    ft_strlcpy_assert(void)
     c2 = ft_strlcpy(buffer_4, str_3, 0);
     assert(c1 == c2);
     assert(!strncmp(buffer_3,buffer_4, 0));
-    
+
+    char buffer_5[10] = {0};
+    char buffer_6[10] = {0};
+    char *str_4 = "hello berlin commnet ca va?";
+    int r1 = strlcpy(buffer_5, str_4, 0);
+    assert(ft_strlen(buffer_5) == 0);
+    int r2 = ft_strlcpy(buffer_6, str_4, 0);
+    assert(ft_strlen(buffer_6) == 0 && r1 == r2);
     printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
 
 }
@@ -225,9 +232,6 @@ void    ft_strncmp_assert(void)
     char *str_5 = "hello_berlin";
     char *str_6 = "                         hello_berlin";
     char str_7[] = "hello_berlin";
-    printf("hehe\n");
-    str_7[0] = -42;
-    printf("voici %d\n", strncmp(str_7,str_6, 5));
     char *str_8 = "hello_berlim";
     assert(ft_strncmp("hello", "hello", 100) == strncmp("hello", "hello", 100));
     assert(ft_strncmp(str_1, str_2, 100) == strncmp(str_1, str_2, 100));
@@ -240,7 +244,7 @@ void    ft_strncmp_assert(void)
     printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
 }
 
-int main(void)
+void    assertion(void)
 {
     ft_isalpha_assert();
     ft_digit_assert();
@@ -262,5 +266,11 @@ int main(void)
     ft_strrchr_assert();
     ft_strlcpy_assert();
     ft_strncmp_assert();
+}
+
+int main(void)
+{
+    
+    assertion();
     return (0);
 }
