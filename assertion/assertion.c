@@ -6,11 +6,13 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 16:20:38 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/06 17:11:54 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/06 21:21:36 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
+#include <limits.h>
+#include <malloc/malloc.h>
 
 
 void    ft_isalpha_assert(void)
@@ -222,6 +224,25 @@ void    ft_strlcpy_assert(void)
 
 }
 
+void    ft_strlcat_assert(void)
+{
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    
+    char buffer[10] = "hello";
+    char buffer2[10] = "hello";
+    char *str = "_world de merde\n";
+
+
+    int r = strlcat(buffer, str, 8);
+    printf("voici r %d\n", r);
+    printf("voici le buffer %s\n", buffer);
+    r = ft_strlcat(buffer2, str, 8);
+    printf("voici r %d\n", r);
+    printf("voici le buffer %s\n", buffer2);
+
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
+}
+
 void    ft_strncmp_assert(void)
 {
     printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
@@ -241,6 +262,65 @@ void    ft_strncmp_assert(void)
     assert(ft_strncmp(str_3, str_4, ft_strlen(str_3) + 100) == strncmp(str_3, str_4, ft_strlen(str_3) + 100));
     assert(ft_strncmp(str_5, str_6, ft_strlen(str_5)) == strncmp(str_5, str_6, ft_strlen(str_5)));
     assert(ft_strncmp(str_7, str_8, ft_strlen(str_7)) == strncmp(str_7, str_8, ft_strlen(str_7)));
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
+}
+
+void    ft_strnstr_assert(void)
+{
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    
+    char *str = "hello berlin";
+    char *str2 = "berlin";
+
+    char *ptr = strnstr(str, str2, 7);
+    char *ptr2 = ft_strnstr(str, str2, 7);
+    assert(ptr == ptr2);
+    ptr = strnstr(str, str2, 2);
+    ptr2 = ft_strnstr(str, str2, 2);
+    assert(ptr == NULL);
+    ptr = strnstr(str,&str2[ft_strlen(str2)] ,ft_strlen(str));
+    ptr2 = ft_strnstr(str,&str2[ft_strlen(str2)] ,ft_strlen(str));
+    assert(ptr == ptr2);
+    ptr = strnstr(str, str2, 20);
+    ptr2 = ft_strnstr(str, str2, 20);
+    assert(ptr == ptr2);
+    ptr = strnstr(str, str2, 0);
+    ptr2 = ft_strnstr(str, str2, 0);
+    assert(ptr == ptr2);
+    ptr = strnstr(str, &str2[ft_strlen(str2)], 10);
+    ptr2 = ft_strnstr(str, &str2[ft_strlen(str2)], 10);
+    assert(ptr == ptr2);
+    str = "berlin";
+    str2 = "b";
+    ptr = strnstr(str, str2, 3);
+    assert(!ft_strncmp("berlin", ptr, ft_strlen("berlin")));
+    ptr2 = ft_strnstr(str, str2, 3);
+    assert(ptr == ptr2);
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
+}
+
+void    ft_calloc_assert(void)
+{
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    
+    char *ptr = ft_calloc(10, sizeof(int));
+    char *ptr2 = calloc(10, sizeof(int));
+    assert(malloc_size(ptr) == malloc_size(ptr2));
+    free(ptr);
+    free(ptr2);
+    ptr = NULL;
+    ptr2 = NULL;
+    ptr = ft_calloc(INT_MIN, INT_MIN);
+    ptr2 = calloc(INT_MIN, INT_MIN);
+    assert(ptr == NULL);
+    assert(ptr2 == NULL);
+    void *ptr3 = ft_calloc(100, 4);
+    void *ptr4 = calloc(100, 4);
+    free(ptr3);
+    free(ptr4);
+    ptr3 = NULL;
+    ptr4 = NULL;
+    assert(malloc_size(ptr3) == malloc_size(ptr4));
     printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
 }
 
@@ -266,6 +346,9 @@ void    assertion(void)
     ft_strrchr_assert();
     ft_strlcpy_assert();
     ft_strncmp_assert();
+    //ft_strlcat_assert();
+    ft_strnstr_assert();
+    ft_calloc_assert();
 }
 
 int main(void)

@@ -26,7 +26,7 @@ fclean: clean
 
 as: ${OBJETS_ASSERT} ${OBJETS_SRCS} 
 	${CC} ${GFLAGS} ${OBJETS_ASSERT} -o ${NAME_ASSERT}
-	./${NAME_ASSERT}
+	leaks --atExit -- ./${NAME_ASSERT}
 
 git: fclean
 	git add .
