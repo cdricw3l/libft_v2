@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 16:20:38 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/06 21:21:36 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/06 23:38:14 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,6 +324,39 @@ void    ft_calloc_assert(void)
     printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
 }
 
+void    ft_strdup_assert(void)
+{
+    char *ptr = strdup(NULL);
+    assert(ptr == NULL);
+}
+
+void    ft_substr_assert(void)
+{
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    char *str = "hello_world";
+	char *new_str = ft_substr(str, 6, 100);
+	if (!new_str)
+	{
+		printf("Error substr\n");
+		return (1);
+	}
+	assert(!ft_strncmp(new_str, "world", ft_strlen(new_str)));
+	free(new_str);
+	new_str = ft_substr(str,100, 100);
+	assert(!new_str);
+	new_str = ft_substr(str, ft_strlen(str), 10);
+	printf("voici la sub: %s\n", new_str);
+	assert(!ft_strncmp(new_str, "", ft_strlen(new_str)));
+	free(new_str);
+	new_str = ft_substr(str, 0, 0);
+	assert(!ft_strncmp(new_str, "", ft_strlen(new_str)));
+	free(new_str);
+	new_str = ft_substr(str, 0, ft_strlen(str));
+	assert(!ft_strncmp(new_str, str, ft_strlen(new_str)));
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
+	free(new_str);
+}
+
 void    assertion(void)
 {
     ft_isalpha_assert();
@@ -349,6 +382,8 @@ void    assertion(void)
     //ft_strlcat_assert();
     ft_strnstr_assert();
     ft_calloc_assert();
+    ft_strdup_assert();
+    ft_substr_assert();
 }
 
 int main(void)
