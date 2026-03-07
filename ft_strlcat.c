@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 17:17:18 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/06 20:18:58 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/07 17:36:46 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
 	size_t	j;
 	size_t	dst_len;
 	size_t	src_len;
-	
+
 	src_len = ft_strlen(src);
 	dst_len = ft_strlen(dst);
 	if (dstsize == 0)

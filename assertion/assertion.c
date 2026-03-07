@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 16:20:38 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/06 23:38:14 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/07 17:37:35 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -336,10 +336,7 @@ void    ft_substr_assert(void)
     char *str = "hello_world";
 	char *new_str = ft_substr(str, 6, 100);
 	if (!new_str)
-	{
 		printf("Error substr\n");
-		return (1);
-	}
 	assert(!ft_strncmp(new_str, "world", ft_strlen(new_str)));
 	free(new_str);
 	new_str = ft_substr(str,100, 100);
@@ -386,9 +383,28 @@ void    assertion(void)
     ft_substr_assert();
 }
 
+void print_bit(size_t i)
+{
+    int b;
+
+    b = 7;
+    while (b >= 0)
+    {
+        printf("%zu", (i >> b) &1);
+        b--;
+    }
+     printf("\n");
+    
+}
+
 int main(void)
 {
     
-    assertion();
+    size_t i = 10;
+    print_bit(i >> 0);
+    print_bit((i >> 2) | 1);
+    printf("%zu\n", (i >> 1) | 1);
+    
+    //assertion();
     return (0);
 }
