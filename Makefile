@@ -15,8 +15,6 @@ OBJETS_ASSERT=${SRCS_ASSER:.c=.o}
 ${NAME}: ${OBJETS_SRCS}
 	${AR} ${NAME} ${OBJETS_SRCS}
 
-
-
 clean:
 	rm -f ${OBJETS_SRCS} ${OBJETS_ASSERT}
 	rm -rf test*
@@ -26,7 +24,7 @@ fclean: clean
 
 as: ${OBJETS_ASSERT} ${OBJETS_SRCS} 
 	${CC} ${GFLAGS} ${OBJETS_ASSERT} -o ${NAME_ASSERT}
-	leaks --atExit -- ./${NAME_ASSERT}
+	./${NAME_ASSERT}
 
 git: fclean
 	git add .

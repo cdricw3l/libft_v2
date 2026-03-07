@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 16:20:38 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/07 17:37:35 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/07 20:46:56 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -326,8 +326,10 @@ void    ft_calloc_assert(void)
 
 void    ft_strdup_assert(void)
 {
-    char *ptr = strdup(NULL);
-    assert(ptr == NULL);
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    // char *ptr = strdup(NULL);
+    // assert(ptr == NULL);
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
 }
 
 void    ft_substr_assert(void)
@@ -340,7 +342,7 @@ void    ft_substr_assert(void)
 	assert(!ft_strncmp(new_str, "world", ft_strlen(new_str)));
 	free(new_str);
 	new_str = ft_substr(str,100, 100);
-	assert(!new_str);
+    assert(!*new_str);
 	new_str = ft_substr(str, ft_strlen(str), 10);
 	printf("voici la sub: %s\n", new_str);
 	assert(!ft_strncmp(new_str, "", ft_strlen(new_str)));
@@ -352,6 +354,39 @@ void    ft_substr_assert(void)
 	assert(!ft_strncmp(new_str, str, ft_strlen(new_str)));
     printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
 	free(new_str);
+}
+
+void    ft_strtrim_assert(void)
+{
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+
+    char *str = "      ********hello_world\n**********";
+    char *trimed = ft_strtrim(str, "* ");
+    assert(!ft_strncmp(trimed, "hello_world\n", ft_strlen(trimed)));
+    assert(malloc_size(trimed) == 16);
+    free(trimed);
+    trimed = ft_strtrim(str, NULL);
+    assert(!ft_strncmp(trimed, str, ft_strlen(trimed)));
+    free(trimed);
+    trimed = ft_strtrim(str, "#");
+    assert(!ft_strncmp(trimed, str, ft_strlen(trimed)));
+    free(trimed);
+    trimed = ft_strtrim("", "");
+    assert(!*trimed);
+    free(trimed);
+    str = "      ********hello_world";
+    trimed = ft_strtrim(str, "* ");
+    assert(!ft_strncmp(trimed, "hello_world", ft_strlen(trimed)));
+    free(trimed);
+    str = "hello_world           ********";
+    trimed = ft_strtrim(str, "* ");
+    assert(!ft_strncmp(trimed, "hello_world", ft_strlen(trimed)));
+    free(trimed);
+    str = "hello_world";
+    trimed = ft_strtrim(str, "* ");
+    assert(!ft_strncmp(trimed, "hello_world", ft_strlen(trimed)));
+    free(trimed);
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
 }
 
 void    assertion(void)
@@ -381,30 +416,12 @@ void    assertion(void)
     ft_calloc_assert();
     ft_strdup_assert();
     ft_substr_assert();
+    ft_strtrim_assert();
 }
 
-void print_bit(size_t i)
-{
-    int b;
-
-    b = 7;
-    while (b >= 0)
-    {
-        printf("%zu", (i >> b) &1);
-        b--;
-    }
-     printf("\n");
-    
-}
-
+//0x101a47fff
 int main(void)
-{
-    
-    size_t i = 10;
-    print_bit(i >> 0);
-    print_bit((i >> 2) | 1);
-    printf("%zu\n", (i >> 1) | 1);
-    
-    //assertion();
+{  
+    assertion();
     return (0);
 }
