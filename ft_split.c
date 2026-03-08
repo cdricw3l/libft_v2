@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 20:47:15 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/07 22:06:33 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/08 22:18:17 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ char	**ft_split(char const *s, char c)
 	char	**split;
 	char	*ptr;
 
+	if (!s)
+		return (NULL);
 	size = count_word(s, c);
 	split = malloc(sizeof(char *) * (size + 1));
 	if (!split)
@@ -90,36 +92,4 @@ char	**ft_split(char const *s, char c)
 	}
 	split[i] = NULL;
 	return (split);
-}
-
-int main(void)
-{
-	char *str = "*****hello***world****comment ca va ***";
-	assert(count_word(str, '*') == 3);
-	char **split = ft_split(str, '*');
-	char **ptr = split;
-
-	if (split)
-	{
-		while (*ptr)
-		{
-			printf("%s\n", *ptr);
-			ptr++;
-		}
-		clean_split(split);
-	}
-	char *str2 = "";
-
-	split = ft_split(str2, '*');
-	assert(split && *split);
-	if (split)
-	{
-		ptr = split;
-		while (*ptr)
-		{
-			printf("%s\n", *ptr);
-			ptr++;
-		}
-		clean_split(split);
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 16:20:38 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/07 20:46:56 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/08 22:18:36 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -417,6 +417,7 @@ void    assertion(void)
     ft_strdup_assert();
     ft_substr_assert();
     ft_strtrim_assert();
+    //ft_split_assert();
 }
 
 //0x101a47fff

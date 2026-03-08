@@ -8,6 +8,7 @@
 # include <limits.h>
 # include <stdio.h>
 # include <ctype.h>
+# include <malloc/malloc.h>
 
 int     ft_isalpha(int c);
 int	    ft_isdigit(int c);
@@ -43,5 +44,6 @@ void    ft_putchar_fd(char c, int fd);
 void    ft_putstr_fd(char *s, int fd);
 void    ft_putendl_fd(char *s, int fd);
 char    **ft_split(char const *s, char c);
+char    *ft_itoa(int n);
 
 #endif
