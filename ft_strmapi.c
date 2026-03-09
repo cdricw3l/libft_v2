@@ -1,45 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/05 21:48:47 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/09 22:23:36 by cdric.b          ###   ########.fr       */
+/*   Created: 2026/03/09 22:22:14 by cdric.b           #+#    #+#             */
+/*   Updated: 2026/03/09 22:27:43 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isspace(char c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
-	return (0);
-}
+	unsigned int	i;
+	char			*new_str;
 
-int	ft_atoi(const char *str)
-{
-	int	result;
-	int	minus;
-
-	minus = 0;
-	result = 0;
-	while (ft_isspace(*str))
-		str++;
-	if (*str == 43 || *str == 45)
+	if (!s || !f)
+		return (NULL);
+	new_str = malloc(sizeof(char) * ft_strlen(s));
+	if (!new_str)
+		return (NULL);
+	i = 0;
+	while (s[i])
 	{
-		if (*str == 45)
-			minus = 1;
-		str++;
+		new_str[i] = f(i, s[i]);
+		i++;
 	}
-	while (ft_isdigit(*str))
-	{
-		result = result * 10 + (*str - '0');
-		str++;
-	}
-	if (minus)
-		return (result * -1);
-	return (result);
+	new_str[i] = '\0';
+	return (new_str);
 }

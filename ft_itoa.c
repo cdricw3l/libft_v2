@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 22:18:52 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/08 23:40:11 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/09 00:16:11 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	ft_putnbr_custom(int n, char **buffer, size_t *size, int mode)
 	nb = n;
 	if (nb < 0)
 	{
-		nb = nb * -1;
 		if (mode == MODE_FILL)
 			(*buffer)[0] = '-';
+		nb = nb * -1;
 		(*size)++;
 	}
 	if (nb >= 10)

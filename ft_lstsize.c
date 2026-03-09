@@ -1,45 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/05 21:48:47 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/09 22:23:36 by cdric.b          ###   ########.fr       */
+/*   Created: 2026/03/09 22:41:19 by cdric.b           #+#    #+#             */
+/*   Updated: 2026/03/09 22:50:10 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isspace(char c)
+int	ft_lstsize(t_list *lst)
 {
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
-	return (0);
-}
+	int	size;
 
-int	ft_atoi(const char *str)
-{
-	int	result;
-	int	minus;
-
-	minus = 0;
-	result = 0;
-	while (ft_isspace(*str))
-		str++;
-	if (*str == 43 || *str == 45)
+	size = 0;
+	while (lst)
 	{
-		if (*str == 45)
-			minus = 1;
-		str++;
+		lst = lst->next;
+		size++;
 	}
-	while (ft_isdigit(*str))
-	{
-		result = result * 10 + (*str - '0');
-		str++;
-	}
-	if (minus)
-		return (result * -1);
-	return (result);
+	return (size);
 }

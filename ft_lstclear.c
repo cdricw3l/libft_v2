@@ -1,45 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/05 21:48:47 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/09 22:23:36 by cdric.b          ###   ########.fr       */
+/*   Created: 2026/03/09 23:48:43 by cdric.b           #+#    #+#             */
+/*   Updated: 2026/03/09 23:56:25 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isspace(char c)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
-	return (0);
-}
+	t_list	*root;
+	t_list	*tmp;
 
-int	ft_atoi(const char *str)
-{
-	int	result;
-	int	minus;
-
-	minus = 0;
-	result = 0;
-	while (ft_isspace(*str))
-		str++;
-	if (*str == 43 || *str == 45)
+	if (!lst || !del)
+		return ;
+	root = *lst;
+	while (root)
 	{
-		if (*str == 45)
-			minus = 1;
-		str++;
+		tmp = root;
+		root = root->next;
+		del(tmp->content);
+		free(tmp);
 	}
-	while (ft_isdigit(*str))
-	{
-		result = result * 10 + (*str - '0');
-		str++;
-	}
-	if (minus)
-		return (result * -1);
-	return (result);
+	*lst = NULL;
 }

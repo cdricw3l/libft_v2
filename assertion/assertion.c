@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 16:20:38 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/08 22:18:36 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/09 23:56:18 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -389,6 +389,200 @@ void    ft_strtrim_assert(void)
     printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
 }
 
+void    ft_lstsize_assert(void)
+{
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    
+    t_list *node_1;
+	t_list *node_2;
+	t_list *node_3;
+	t_list *node_4;
+	t_list *node_5;
+
+	node_1 = ft_lstnew(ft_strdup("hello"));
+	node_2 = ft_lstnew(ft_strdup("berlin"));
+	node_3 = ft_lstnew(ft_strdup("how"));
+	node_4 = ft_lstnew(ft_strdup("are"));
+	node_5 = ft_lstnew(ft_strdup("you"));
+	
+	node_1->next = node_2; 
+	node_1->next->next = node_3; 
+	node_1->next->next->next = node_4; 
+	node_1->next->next->next->next = node_5;
+	
+	assert(ft_lstsize(node_1) == 5);
+
+	free(node_1->content);
+	free(node_1);
+	free(node_2->content);
+	free(node_2);
+	free(node_3->content);
+	free(node_3);
+	free(node_4->content);
+	free(node_4);
+
+	assert(ft_lstsize(NULL) == 0);
+	assert(ft_lstsize(node_5) == 1);
+
+	free(node_5->content);
+	free(node_5);
+
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
+}
+
+void    ft_lstlast_assert(void)
+{
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    
+    t_list *node_1;
+	t_list *node_2;
+	t_list *node_3;
+	t_list *node_4;
+	t_list *node_5;
+
+	node_1 = ft_lstnew(ft_strdup("hello"));
+	node_2 = ft_lstnew(ft_strdup("berlin"));
+	node_3 = ft_lstnew(ft_strdup("how"));
+	node_4 = ft_lstnew(ft_strdup("are"));
+	node_5 = ft_lstnew(ft_strdup("you"));
+	
+	node_1->next = node_2; 
+	node_1->next->next = node_3; 
+	node_1->next->next->next = node_4; 
+	node_1->next->next->next->next = node_5;
+	
+	assert(ft_lstlast(node_1) == node_5
+		&& !ft_strncmp((char *)node_5->content, (char *)(ft_lstlast(node_1)->content), ft_strlen((char *)(ft_lstlast(node_1)->content))));
+	
+	free(node_1->content);
+	free(node_1);
+	free(node_2->content);
+	free(node_2);
+	free(node_3->content);
+	free(node_3);
+	free(node_4->content);
+	free(node_4);
+	free(node_5->content);
+	free(node_5);
+	assert(ft_lstlast(NULL) == NULL);
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
+}
+
+void    ft_lstadd_back_assert(void)
+{
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    
+    t_list **lst;
+	t_list *node_1;
+	t_list *node_2;
+	t_list *node_3;
+	t_list *node_4;
+	t_list *node_5;
+
+	lst = malloc(sizeof(t_list *));
+	if (!lst)
+		return (1);
+		
+	node_1 = ft_lstnew(ft_strdup("hello"));
+	node_2 = ft_lstnew(ft_strdup("berlin"));
+	node_3 = ft_lstnew(ft_strdup("how"));
+	node_4 = ft_lstnew(ft_strdup("are"));
+	node_5 = ft_lstnew(ft_strdup("you"));
+
+	ft_lstadd_front(lst, node_1);
+	assert(*lst == node_1);
+	ft_lstadd_front(lst, node_2);
+	assert(*lst == node_2);
+	ft_lstadd_front(lst, node_3);
+	assert(*lst == node_3);
+	ft_lstadd_front(lst, node_4);
+	assert(*lst == node_4);
+	ft_lstadd_front(lst, node_5);
+	assert(*lst == node_5);
+	
+	free(node_1->content);
+	free(node_1);
+	free(node_2->content);
+	free(node_2);
+	free(node_3->content);
+	free(node_3);
+	free(node_4->content);
+	free(node_4);
+	free(node_5->content);
+	free(node_5);
+	free(lst);
+    
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
+    
+}
+
+void    ft_lstadd_back_assert(void)
+{
+    printf( "\033[33m" "\nTEST: %s\n" "\033[0m", __FUNCTION__);
+    t_list *node_1;
+	t_list *node_2;
+	t_list *node_3;
+	t_list *node_4;
+	t_list *node_5;
+
+	node_1 = ft_lstnew(ft_strdup("hello"));
+	node_2 = ft_lstnew(ft_strdup("berlin"));
+	node_3 = ft_lstnew(ft_strdup("how"));
+	node_4 = ft_lstnew(ft_strdup("are"));
+	node_5 = ft_lstnew(ft_strdup("you"));
+	
+	ft_lstadd_back(&node_1, node_2);
+	assert(ft_lstlast(node_1) == node_2);
+	ft_lstadd_back(&node_1, node_3);
+	assert(ft_lstlast(node_1) == node_3);
+	ft_lstadd_back(&node_1, node_4);
+	assert(ft_lstlast(node_1) == node_4);
+	ft_lstadd_back(&node_1, node_5);
+	assert(ft_lstlast(node_1) == node_5);
+
+	free(node_1);
+	free(node_2);
+	free(node_3);
+	free(node_4);
+	free(node_5);
+    printf( "\033[32m" "TEST: %s OK!\n" "\033[0m", __FUNCTION__);
+}
+
+void    ft_lstclear_assert(void)
+{
+    t_list **lst;
+	t_list *node_1;
+	t_list *node_2;
+	t_list *node_3;
+	t_list *node_4;
+	t_list *node_5;
+
+	lst = malloc(sizeof(t_list *));
+	if (!lst)
+		return (1);
+
+	node_1 = ft_lstnew(ft_strdup("hello"));
+	node_2 = ft_lstnew(ft_strdup("berlin"));
+	node_3 = ft_lstnew(ft_strdup("how"));
+	node_4 = ft_lstnew(ft_strdup("are"));
+	node_5 = ft_lstnew(ft_strdup("you"));
+	
+	ft_lstadd_front(lst, node_1);
+	assert(*lst == node_1);
+	ft_lstadd_front(lst, node_2);
+	assert(*lst == node_2);
+	ft_lstadd_front(lst, node_3);
+	assert(*lst == node_3);
+	ft_lstadd_front(lst, node_4);
+	assert(*lst == node_4);
+	ft_lstadd_front(lst, node_5);
+	assert(*lst == node_5);
+
+	ft_lstclear(lst, free);
+	assert(*lst == NULL);
+	free(lst);
+}
+
 void    assertion(void)
 {
     ft_isalpha_assert();
@@ -418,11 +612,39 @@ void    assertion(void)
     ft_substr_assert();
     ft_strtrim_assert();
     //ft_split_assert();
+    ft_lstsize_assert();
+    ft_lstlast_assert();
+    ft_lstadd_back_assert();
+    ft_lstclear_assert();
 }
+
 
 //0x101a47fff
 int main(void)
 {  
-    assertion();
+    //assertion();
+
+    int fd;
+    int b_read;
+    char buffer[1024];
+
+    fd = open("../libft.a", O_RDONLY);
+    if (fd < 0)
+    {
+        printf("open error\n");
+        return (1);
+    }
+    
+    b_read = read(fd, buffer, 1023);
+    if (b_read < 0)
+    {
+        printf("read error\n");
+        return (1);
+    }
+    
+    buffer[b_read] = '\0';
+
+    printf("voici le buffer %s\n", buffer);
+
     return (0);
 }
