@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 21:55:13 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/08 22:16:15 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/10 16:46:01 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	src_len = ft_strlen(s);
 	if (start > src_len)
 		return (ft_strdup(""));
-	new_str = malloc(sizeof(char) * (len));
+	if (len > src_len)
+		len = src_len;
+	new_str = malloc(sizeof(char) * (len + 1));
 	if (!new_str)
 		return (NULL);
-	bytes_cpy = ft_strlcpy(new_str, &s[start], len);
-	if (bytes_cpy != ft_strlen(s) - start)
-	{
-		free(new_str);
-		return (NULL);
-	}
+	bytes_cpy = 0;
+	while (s[start] && bytes_cpy < len)
+		new_str[bytes_cpy++] = s[start++];
+	new_str[bytes_cpy] = '\0';
 	return (new_str);
 }

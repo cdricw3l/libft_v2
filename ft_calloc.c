@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 20:49:31 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/07 17:37:34 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/10 17:29:33 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
-
+	
 	ptr = malloc(count * size);
 	if (!ptr)
 		return (NULL);

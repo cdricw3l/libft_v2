@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 20:47:15 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/08 22:18:17 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/10 17:02:36 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	**ft_split(char const *s, char c)
 	{
 		while (*ptr && *ptr == c)
 			ptr++;
-		split[i] = ft_substr(&(*ptr), 0, index_of(&(*ptr), c) + 1);
+		split[i] = ft_substr(&(*ptr), 0, index_of(&(*ptr), c));
 		if (!split[i])
 			return (clean_split(split));
 		ptr += ft_strlen(split[i++]);
