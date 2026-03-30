@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lowest_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/04 20:10:53 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/07 02:04:52 by cdric.b          ###   ########.fr       */
+/*   Created: 2026/03/26 18:29:45 by cdric.b           #+#    #+#             */
+/*   Updated: 2026/03/29 15:28:18 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int ft_lowest_int(int *arr, int len, int v_or_i)
 {
-	size_t	i;
+	int i;
+	int lowest_v;
+	int lowest_i;
 
 	i = 0;
-	while (s[i])
+	lowest_v = arr[0];
+	lowest_i = 0;
+	while (i < len)
+	{
+		if (arr[i] < lowest_v)
+		{
+			lowest_v = arr[i];
+			lowest_i = i;
+		}
 		i++;
-	return (i);
+	}
+	if (v_or_i == INDEX)
+		return (lowest_i);
+	return (lowest_v);
 }

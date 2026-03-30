@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_clean_split.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/04 20:10:53 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/07 02:04:52 by cdric.b          ###   ########.fr       */
+/*   Created: 2026/03/30 01:51:22 by cdric.b           #+#    #+#             */
+/*   Updated: 2026/03/30 01:51:50 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	*clean_split(char **split)
 {
-	size_t	i;
+	char	**ptr;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	ptr = split;
+	while (*ptr)
+	{
+		if (*ptr)
+		{
+			free(*ptr);
+			*ptr = NULL;
+		}
+		ptr++;
+	}
+	free(split);
+	split = NULL;
+	return (NULL);
 }

@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_index_of.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/04 20:10:53 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/07 02:04:52 by cdric.b          ###   ########.fr       */
+/*   Created: 2026/03/26 18:27:55 by cdric.b           #+#    #+#             */
+/*   Updated: 2026/03/26 18:28:31 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int ft_index_of(int *arr, int len, int target)
 {
-	size_t	i;
+	int i;
 
 	i = 0;
-	while (s[i])
+	while (i < len)
+	{
+		if(arr[i] == target)
+			return (i);
 		i++;
-	return (i);
+	}
+	return (-1);
 }
