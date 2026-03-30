@@ -68,4 +68,16 @@ void    ft_lstclear(t_list **lst, void (*del)(void*));
 void    ft_lstiter(t_list *lst, void (*f)(void *));
 t_list  *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
+//add
+
+int ft_index_of(int *arr, int len, int target);
+
+#define VALUE 0
+#define INDEX 1
+
+int     ft_lowest_int(int *arr, int len, int v_or_i);
+int     ft_biggest_int(int *arr, int len);
+int     ft_issort(int *arr, int len);
+void    *clean_split(char **split);
+
 #endif

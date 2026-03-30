@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 20:47:15 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/10 17:02:36 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/30 01:54:06 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static size_t	count_word(char const *s, char c)
 	return (counter);
 }
 
-static void	*clean_split(char **split)
+static void	*clean_splt(char **split)
 {
 	char	**ptr;
 
@@ -87,7 +87,7 @@ char	**ft_split(char const *s, char c)
 			ptr++;
 		split[i] = ft_substr(&(*ptr), 0, index_of(&(*ptr), c));
 		if (!split[i])
-			return (clean_split(split));
+			return (clean_splt(split));
 		ptr += ft_strlen(split[i++]);
 	}
 	split[i] = NULL;

@@ -22,6 +22,8 @@ clean:
 fclean: clean
 	rm -f ${NAME} ${NAME_ASSERT}
 
+re: fclean ${NAME}
+
 as: ${OBJETS_ASSERT} ${OBJETS_SRCS} 
 	${CC} ${GFLAGS} ${OBJETS_ASSERT} -o ${NAME_ASSERT}
 	./${NAME_ASSERT}
