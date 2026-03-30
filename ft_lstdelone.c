@@ -6,13 +6,13 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 23:44:18 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/09 23:47:43 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/30 06:45:11 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstdelone(t_list *lst, void (*del)(void*))
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
 	if (!lst && !del)
 		return ;

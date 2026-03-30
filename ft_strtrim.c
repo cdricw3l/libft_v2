@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 00:06:05 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/07 20:43:31 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/03/30 06:43:22 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ static size_t	get_string_size(char const *str, char const *set)
 		i++;
 	return (i);
 }
-
-#include <malloc/malloc.h>
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
