@@ -79,5 +79,4 @@ int     ft_lowest_int(int *arr, int len, int v_or_i);
 int     ft_biggest_int(int *arr, int len);
 int     ft_issort(int *arr, int len);
 void    *clean_split(char **split);
-
 #endif
