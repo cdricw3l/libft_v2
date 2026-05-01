@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 21:39:00 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/07 17:37:03 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/01 14:55:25 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ char	*ft_strdup(const char *s)
 	char	*str;
 	size_t	i;
 
-	if (!s)
-		return (NULL);
 	str = malloc((ft_strlen(s) + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
