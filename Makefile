@@ -2,6 +2,7 @@ CC			:=cc
 AR			:=ar -rcs
 GFLAGS		:=-Wall -Wextra -Werror
 NAME		:=libft.a
+ASSERT_NAME	:= assert/assert_test
 SRCS		:=	ft_atoi.c \
 				ft_bzero.c \
 				ft_calloc.c \
@@ -48,8 +49,11 @@ SRCS_BONUS	:=	$(SRCS) \
 				ft_lstnew.c \
 				ft_lstsize.c \
 
+SRCS_ASSERT := assert/assertion.c
+
 OBJETS_SRCS		:=	${SRCS:.c=.o}
 OBJETS_BONUS 	:=	${SRCS_BONUS:.c=.o}
+OBJETS_ASSERT	:=	${SRCS_ASSERT:.c=.o} ${OBJETS_BONUS}
 
 %.o:%.c
 	${CC} -c ${GFLAGS} $^ -o $@
@@ -60,12 +64,16 @@ ${NAME}:	${OBJETS_SRCS}
 bonus:		${OBJETS_BONUS}
 	${AR} ${NAME} ${OBJETS_BONUS}
 
+as: ${OBJETS_ASSERT}
+	${CC} ${GFLAGS} ${OBJETS_ASSERT} -o ${ASSERT_NAME}
+	./assert/assert_test
+
 clean:
-	rm -f ${OBJETS_SRCS} ${OBJETS_BONUS}
+	rm -f ${OBJETS_SRCS} ${OBJETS_BONUS} ${OBJETS_ASSERT}
 	rm -rf test*
 
 fclean: clean
-	rm -f ${NAME}
+	rm -f ${NAME} ${ASSERT_NAME} 
 
 re: fclean ${NAME}
 
