@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assertion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:20:37 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/01 22:03:51 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/02 20:00:11 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,8 +138,9 @@ void ft_bzero_assert(void)
 
 int main(void)
 {
-    ft_strdup_assert();
-    ft_atoi_assert();
-    ft_bzero_assert();
+    char *str;
+
+    str = ft_strtrim("   xxxtripouille   xxx", " x");
+    printf("str: %s\n", str);
     return (0);
 }

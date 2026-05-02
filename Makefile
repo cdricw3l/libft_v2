@@ -36,9 +36,7 @@ SRCS		:=	ft_atoi.c \
 				ft_strtrim.c \
 				ft_substr.c \
 				ft_tolower.c \
-				ft_toupper.c
-
-SRCS_BONUS	:=	$(SRCS) \
+				ft_toupper.c \
 				ft_lstadd_back.c \
 				ft_lstadd_front.c \
 				ft_lstclear.c \
@@ -47,13 +45,12 @@ SRCS_BONUS	:=	$(SRCS) \
 				ft_lstlast.c \
 				ft_lstmap.c \
 				ft_lstnew.c \
-				ft_lstsize.c \
+				ft_lstsize.c
 
 SRCS_ASSERT := assert/assertion.c
 
 OBJETS_SRCS		:=	${SRCS:.c=.o}
-OBJETS_BONUS 	:=	${SRCS_BONUS:.c=.o}
-OBJETS_ASSERT	:=	${SRCS_ASSERT:.c=.o} ${OBJETS_BONUS}
+OBJETS_ASSERT	:=	${SRCS_ASSERT:.c=.o} ${OBJETS_SRCS}
 
 %.o:%.c
 	${CC} -c ${GFLAGS} $^ -o $@
@@ -61,15 +58,12 @@ OBJETS_ASSERT	:=	${SRCS_ASSERT:.c=.o} ${OBJETS_BONUS}
 ${NAME}:	${OBJETS_SRCS}
 	${AR} ${NAME} ${OBJETS_SRCS}
 
-bonus:		${OBJETS_BONUS}
-	${AR} ${NAME} ${OBJETS_BONUS}
-
 as: ${OBJETS_ASSERT}
 	${CC} ${GFLAGS} ${OBJETS_ASSERT} -o ${ASSERT_NAME}
 	./assert/assert_test
 
 clean:
-	rm -f ${OBJETS_SRCS} ${OBJETS_BONUS} ${OBJETS_ASSERT}
+	rm -f ${OBJETS_SRCS} ${OBJETS_ASSERT}
 	rm -rf test*
 
 fclean: clean

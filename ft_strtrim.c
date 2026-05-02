@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 00:06:05 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/30 06:43:22 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/02 20:05:24 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+#define START 0
+#define END 1
 
 static	size_t	is_on_set(char c, char const *set)
 {
@@ -26,39 +29,40 @@ static	size_t	is_on_set(char c, char const *set)
 	return (0);
 }
 
-static size_t	get_string_size(char const *str, char const *set)
+static size_t	get_string_size(char const *str, char const *set, size_t idx[2])
 {
 	size_t	i;
+	size_t end_idx;
 
 	i = 0;
-	while (str[i] && !is_on_set(str[i], set))
+	end_idx = ft_strlen(str) - 1;
+	while (str[i] && is_on_set(str[i], set))
 		i++;
+	idx[START] = i;
+	
+	if (i < end_idx)
+	{
+		while(end_idx > 0 && is_on_set(str[end_idx], set))
+			end_idx--;
+	}
+	idx[END] = end_idx;
 	return (i);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	size;
-	size_t	bytes_cp;
+	size_t	size[2];
 	char	*new_str;
 
 	if (!s1)
 		return (NULL);
 	if (!set)
 		return (ft_strdup(s1));
-	i = 0;
-	while (s1[i] && is_on_set(s1[i], set))
-		i++;
-	size = get_string_size(&(s1[i]), set);
-	new_str = malloc(sizeof(char) * (size + 1));
+	get_string_size(s1, set, size);
+	if(size[START] > size[END])
+		return (ft_strdup(""));
+	new_str = ft_substr(s1,size[START], (size[END] - size[START]) + 1);
 	if (!new_str)
 		return (NULL);
-	bytes_cp = ft_strlcpy(new_str, &s1[i], (size + 1));
-	if (bytes_cp != ft_strlen(&s1[i]))
-	{
-		free(new_str);
-		return (NULL);
-	}
 	return (new_str);
 }
