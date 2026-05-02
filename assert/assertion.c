@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:20:37 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/01 16:17:14 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/01 22:03:51 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ void ft_bzero_assert(void)
     ft_bzero(b1, n * size);
     bzero(b2, n * size);
     assert(!memcmp(b1,b2,n * size));
+    
     TEST_END;
 
 }
