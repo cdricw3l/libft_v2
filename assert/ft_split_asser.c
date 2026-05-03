@@ -6,7 +6,7 @@
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 17:34:02 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/03 18:14:53 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/03 18:57:34 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void ft_split_test(int test_nb, char **split, ...)
     if(!split)
     {
         assert(test_nb == 1);
-        printf("Test %d -> " C_GREEN "Ok!"C_RESET "\n",test_nb);
+        printf("Test %d: comparaison -> " C_GREEN "Ok!"C_RESET " memory -> " C_GREEN "Ok!" C_RESET"\n",test_nb);
         return ;
     }
     ptr = split;
@@ -51,12 +51,12 @@ static void ft_split_test(int test_nb, char **split, ...)
     {
         arg = va_arg(ap, char *);
         if(arg)
-            assert(!strcmp(arg, *ptr));
+            assert(!strcmp(arg, *ptr) && malloc_usable_size(*ptr) == ft_strlen(arg) + 1);
         ptr++;
     }
     if(split)
         clean_split(split);
-    printf("Test %d -> " C_GREEN "Ok!"C_RESET "\n",test_nb);
+    printf("Test %d: comparaison -> " C_GREEN "Ok!"C_RESET " memory -> " C_GREEN "Ok!" C_RESET"\n",test_nb);
     va_end(ap);
 }
 
@@ -73,18 +73,8 @@ void ft_split_assert(void)
     ft_split_test(test_nb++, ft_split("            ****************", '*'), "            ");
     ft_split_test(test_nb++, ft_split("42*424242*********42", '*'), "42", "424242", "42");
     ft_split_test(test_nb++, ft_split("42*******424242*********42", '*'), "42", "424242", "42");
-    char str[5] = {'A','A', -100,'A','A'};
-    printf("%s\n",str);
-    char **t = ft_split(str, -100);
-    int i = 0;
-    while (t[i])
-    {
-        assert(!strcmp(t[i], "AA"));
-        printf("voici: %s\n", t[i]);
-        i++;
-    }
-    clean_split(t);
-    //ft_split_test(test_nb++, ft_split(str, -100), "AA", "AA");
+    char str[6] = {'A','A', -100,'A','A','\0'};
+    ft_split_test(test_nb++, ft_split(str, -100), "AA", "AA");
 
     TEST_OK("ft_split");
     SEP;
