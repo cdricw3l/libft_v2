@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup_assert.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 15:02:53 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/03 15:24:06 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/03 20:58:42 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ void test_and_clean_str(char *s1, char *s2, int test_nb)
     if(s1 && s2)
     {
         assert(!strcmp(s1,s2));
-        assert(malloc_usable_size(s1) == malloc_usable_size(s2));
+        #ifdef __unix__
+            assert(malloc_usable_size(s1) == malloc_usable_size(s2));
+        #else
+            assert(malloc_size(s1) == malloc_size(s2));
+        #endif
     }
     printf("test %d :" "string are the same comparaison ->" C_GREEN " OK!" C_RESET " memory allocation size are the same -> "C_GREEN "OK!\n" C_RESET, test_nb);
     

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_assert.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 15:30:23 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/03 16:30:29 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/03 21:49:02 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,25 @@
 static void ft_itoa_test(int nb, char *expected, int test_nb)
 {
     char *ft;
+    char *s;
+    size_t (*f)(const void *ptr);
 
+    #ifdef __APPLE__
+        f = malloc_size;
+    #else
+        f = malloc_usable_size;
+    #endif
+    s = strdup(expected);
+    assert(s);
     ft = ft_itoa(nb);
     printf("Test %d input: " C_PBG "%d"C_RESET, test_nb,nb);
     printf(" output -> "C_GBG"%s"C_RESET,ft);
-    assert(!strcmp(expected,ft));
+    assert(!strcmp(s,ft));
     printf(C_GREEN" OK! "C_RESET);
-    assert(malloc_usable_size(ft) == ft_strlen(expected) + 1);
+    assert(f(ft) == f(s));
     printf("Memory check: -> " C_GREEN "OK!\n"C_RESET);
     free(ft);
+    free(s);
 }
 
 void ft_itoa_assert(void)

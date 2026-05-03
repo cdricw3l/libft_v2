@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assertion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:20:37 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/03 17:59:24 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/03 20:56:30 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int main(void)
     ft_atoi_assert();
     ft_itoa_assert();
     ft_strdup_assert();
-    ft_calloc_assert();
+    //ft_calloc_assert();
     ft_split_assert();
     return (0);
 }

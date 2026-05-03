@@ -60,7 +60,12 @@ ${NAME}:	${OBJETS_SRCS}
 
 as: ${OBJETS_ASSERT}
 	${CC} ${GFLAGS} ${OBJETS_ASSERT} -o ${ASSERT_NAME}
+ifeq (${shell uname} , Darwin)
+	${shell export MallocStackLogging=1}
+	leaks --atExit --  ./assert/assert_test
+else
 	valgrind --leak-check=full -s ./assert/assert_test
+endif
 
 clean:
 	rm -f ${OBJETS_SRCS} ${OBJETS_ASSERT}
@@ -75,3 +80,7 @@ git: fclean
 	git add .
 	git commit -m ${COM}
 	git push origin ${shell git branch --show-current}
+
+OS := ${shell uname}
+
+r:
