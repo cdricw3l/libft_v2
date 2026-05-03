@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 06:46:50 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/30 06:50:47 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/03 08:39:41 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@
 # include <stdio.h>
 # include <ctype.h>
 # include <fcntl.h>
-# include <malloc.h>
+
+#ifdef __unix__
+	# include <malloc.h>
+#endif
+
+#ifdef __APPLE__
+	# include <malloc/malloc.h>
+#endif
 
 typedef struct s_list
 {

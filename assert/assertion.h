@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assertion.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:21:02 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/01 15:49:54 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/03 17:44:17 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,33 @@
 #define ASSERTION_H
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <assert.h>
 #include <unistd.h>
 #include <limits.h>
+#include <stdarg.h>
 #include "../libft.h"
+
 
 #define C_RED "\e[0;31;1m"
 #define C_GREEN "\e[0;32;1m"
+#define C_YBG "\e[0;43;1m"
+#define C_BBG "\e[0;44;1m"
+#define C_GBG "\e[2;42;1m"
+#define C_PBG "\e[0;45;1m"
 #define C_CYAN "\e[0;36;1m"
 #define C_RESET "\e[0m"
 
-#define TEST_START printf(C_CYAN"Start test %s\n"C_RESET, __func__)
-#define TEST_END printf(C_GREEN"%s: OK!\n"C_RESET, __func__)
+#define TEST_STAR(f)    printf(C_CYAN"Start test %s\n"C_RESET, f);
+#define TEST_OK(f)      printf(C_GREEN"Test %s: Ok!\n"C_RESET, f);
+#define SEP printf(C_RED"///////////////////////////////////"C_RESET);
+#define NL printf("\n");
 
+void str_classification_assert(void);
+void ft_atoi_assert(void);
+void ft_strdup_assert(void);
+void ft_itoa_assert(void);
+void ft_calloc_assert(void);
+void ft_split_assert(void);
 
 #endif

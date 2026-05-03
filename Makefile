@@ -47,7 +47,7 @@ SRCS		:=	ft_atoi.c \
 				ft_lstnew.c \
 				ft_lstsize.c
 
-SRCS_ASSERT := assert/assertion.c
+SRCS_ASSERT := ${wildcard assert/*.c}
 
 OBJETS_SRCS		:=	${SRCS:.c=.o}
 OBJETS_ASSERT	:=	${SRCS_ASSERT:.c=.o} ${OBJETS_SRCS}
@@ -60,7 +60,7 @@ ${NAME}:	${OBJETS_SRCS}
 
 as: ${OBJETS_ASSERT}
 	${CC} ${GFLAGS} ${OBJETS_ASSERT} -o ${ASSERT_NAME}
-	./assert/assert_test
+	valgrind --leak-check=full -s ./assert/assert_test
 
 clean:
 	rm -f ${OBJETS_SRCS} ${OBJETS_ASSERT}
