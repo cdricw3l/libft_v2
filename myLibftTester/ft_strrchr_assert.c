@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr_assert.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/04 11:20:06 by cebouhad          #+#    #+#             */
+/*   Updated: 2026/05/04 11:24:06 by cebouhad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "assertion.h"
 
 void ft_strrchr_test(int test_nb, char *s, int c)
@@ -51,5 +63,6 @@ void ft_strrchr_assert(void)
     ft_strrchr_test(test_nb++, s1, INT_MAX);
 
     TEST_OK("ft_strrchr");
-
+    SEP;
+    NL;
 }

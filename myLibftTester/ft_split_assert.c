@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_assert.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 17:34:02 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/04 06:57:51 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/04 10:01:08 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void ft_split_test(int test_nb, char **split, ...)
     va_list ap;
     char **ptr;
     char *arg;
-    size_t (*f)(const void *ptr);
+    size_t (*f)(void *ptr);
 
     #ifdef __APPLE__
         f = malloc_size;

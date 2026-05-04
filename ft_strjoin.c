@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 23:40:05 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/06 23:58:19 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/04 12:49:41 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	bytes_cp;
 	char	*new_str;
 
+	/*
+		The assignement said return NULL if the allocation fail. 
+		So if *s1 and *s2 == NULL i return ""
+
+	*/
 	if (!s1 && !s2)
-		return (NULL);
+		return (strdup(""));
 	if (s1 && !s2)
 		return (ft_strdup(s1));
 	if (!s1 && s2)

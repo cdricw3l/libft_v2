@@ -2,7 +2,7 @@ CC			:=cc
 AR			:=ar -rcs
 GFLAGS		:=-Wall -Wextra -Werror -g
 NAME		:=libft.a
-ASSERT_NAME	:= assert/assert_test
+ASSERT_NAME	:= myLibftTester/assert_test
 SRCS		:=	ft_atoi.c \
 				ft_bzero.c \
 				ft_calloc.c \
@@ -47,24 +47,24 @@ SRCS		:=	ft_atoi.c \
 				ft_lstnew.c \
 				ft_lstsize.c
 
-SRCS_ASSERT := ${wildcard assert/*.c}
+SRCS_ASSERT := ${filter-out myLibftTester/draft.c, ${wildcard myLibftTester/*.c}}
 
 OBJETS_SRCS		:=	${SRCS:.c=.o}
 OBJETS_ASSERT	:=	${SRCS_ASSERT:.c=.o} ${OBJETS_SRCS}
 
 %.o:%.c
-	${CC} -c ${GFLAGS} $^ -o $@
+	${CC} -c  ${GFLAGS} $^ -o $@
 
 ${NAME}:	${OBJETS_SRCS}
 	${AR} ${NAME} ${OBJETS_SRCS}
 
 as: ${OBJETS_ASSERT}
-	${CC} ${GFLAGS} ${OBJETS_ASSERT} -o ${ASSERT_NAME}
+	${CC} ${GFLAGS} -lbsd ${OBJETS_ASSERT} -o ${ASSERT_NAME}
 ifeq (${shell uname} , Darwin)
 	${shell export MallocStackLogging=1}
-	leaks -list  --atExit --  ./assert/assert_test
+	leaks -list  --atExit --  ./${ASSERT_NAME}
 else
-	valgrind --leak-check=full -s ./assert/assert_test
+	valgrind --leak-check=full --show-leak-kinds=all -s ./${ASSERT_NAME}
 endif
 
 clean:
@@ -72,7 +72,7 @@ clean:
 	rm -rf test*
 
 fclean: clean
-	rm -f ${NAME} ${ASSERT_NAME} 
+	rm -f ${NAME} ${ASSERT_NAME} draft
 
 re: fclean ${NAME}
 
@@ -81,6 +81,11 @@ git: fclean
 	git commit -m ${COM}
 	git push origin ${shell git branch --show-current}
 
-OS := ${shell uname}
 
-r:
+draft:
+	gcc myLibftTester/draft.c -L. -lft -lbsd -o draft
+
+t: draft
+	./draft
+
+.PHONY: draft

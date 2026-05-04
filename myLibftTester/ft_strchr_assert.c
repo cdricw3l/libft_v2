@@ -34,17 +34,21 @@ void ft_strchr_assert(void)
     ft_strchr_test(test_nb++, str, 'b');
     // Test 5
     ft_strchr_test(test_nb++, str, '\0');
-    // Test 6
     free(str);
     str = ft_strdup("");
     assert(str);
-    // Test 7
+    // Test 6
     ft_strchr_test(test_nb++, str, '\0');
-    // Test 8
+    // Test 7
     ft_strchr_test(test_nb++, str, 'A');
     free(str);
+    // Test 8
+    char s[] = "tripouille"; 
+    ft_strchr_test(test_nb++, s, 't' + 256);
+
     char s0[] = {-10, -12, -127, 32, 97, 98};
     // Test 9
+    // attention  bien caster la source en unsigned char -> man : Here "character" means "byte"; these functions do not work with wide or multibyte characters.
     ft_strchr_test(test_nb++, s0, -127);
     char s1[] = {-10, -12, -127, 32, 97, 98,'\0'};
     // Test 10

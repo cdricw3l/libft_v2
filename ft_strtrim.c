@@ -6,7 +6,7 @@
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 00:06:05 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/02 20:05:24 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/04 16:50:42 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	get_string_size(s1, set, size);
 	if(size[START] > size[END])
 		return (ft_strdup(""));
-	new_str = ft_substr(s1,size[START], (size[END] - size[START]) + 1);
+	new_str = ft_substr(s1, size[START], (size[END] - size[START]) + 1);
 	if (!new_str)
 		return (NULL);
 	return (new_str);
