@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assertion.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:21:02 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/04 17:38:05 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/04 20:07:57 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 #include <limits.h>
 #include <stdarg.h>
 #include "../libft.h"
-#include <bsd/string.h>
- #include <string.h>
+#ifdef _unix_
+    #include <bsd/string.h>
+#endif
+#include <string.h>
 
 
 #define C_RED "\e[0;31;1m"

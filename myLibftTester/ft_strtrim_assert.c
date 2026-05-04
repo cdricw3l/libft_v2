@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim_assert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 16:35:13 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/04 17:16:16 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/04 20:11:19 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@ void ft_strtrim_test(int test_nb, char *s1, char *set, char *expected)
 {
     char *str;
 
+    #ifdef __APPLE__
+        size_t (*f)(const void *ptr);
+        f = malloc_size;
+    #else
+        size_t (*f)(void *ptr);
+        f = malloc_usable_size;
+    #endif
+
     printf("Test %d: ",test_nb);
     str = ft_strtrim(s1, set);
     if(!expected)
@@ -24,7 +32,7 @@ void ft_strtrim_test(int test_nb, char *s1, char *set, char *expected)
     else
     {
         assert(!strcmp(str, expected));
-        assert(malloc_usable_size(str) == malloc_usable_size(expected));
+        assert(f(str) == f(expected));
         printf("input: %s expected output: "C_PBG"%s"C_RESET " effective output: "C_PBG"%s"C_RESET"-> "C_GREEN"Ok! "C_RESET"memory check ->"C_GREEN "Ok! "C_RESET"\n", s1, expected, str);
         free(str);
         free(expected);

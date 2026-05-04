@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat_assert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 13:22:42 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/04 15:17:56 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/04 20:10:12 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,9 @@ void ft_strlcat_test(int test_nb, char *s1, char *s2, size_t buffer_size)
 void ft_strlcat_assert(void)
 {
     char *test_name = "ft_strlcat";
-    int test_nb;
     int r1;
     int r2;
     TEST_STAR(test_name);
-    test_nb = 1;
 
     char b1[10] = "hello";
     char b2[10] = "hello";

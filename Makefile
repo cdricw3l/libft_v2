@@ -59,11 +59,13 @@ ${NAME}:	${OBJETS_SRCS}
 	${AR} ${NAME} ${OBJETS_SRCS}
 
 as: ${OBJETS_ASSERT}
-	${CC} ${GFLAGS} -lbsd ${OBJETS_ASSERT} -o ${ASSERT_NAME}
+	
 ifeq (${shell uname} , Darwin)
+	${CC} ${GFLAGS} ${OBJETS_ASSERT} -o ${ASSERT_NAME}
 	${shell export MallocStackLogging=1}
 	leaks -list  --atExit --  ./${ASSERT_NAME}
 else
+	${CC} ${GFLAGS} -lbsd ${OBJETS_ASSERT} -o ${ASSERT_NAME}
 	valgrind --leak-check=full --show-leak-kinds=all -s ./${ASSERT_NAME}
 endif
 

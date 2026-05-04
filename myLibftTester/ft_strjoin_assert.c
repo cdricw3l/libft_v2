@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin_assert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 12:07:54 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/04 12:48:04 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/04 20:09:53 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,27 @@ void ft_strjoin_test(int test_nb, char *s1, char *s2, char *expected)
 
     char *str;
 
+    #ifdef __APPLE__
+        size_t (*f)(const void *ptr);
+        f = malloc_size;
+    #else
+        size_t (*f)(void *ptr);
+        f = malloc_usable_size;
+    #endif
+
     printf("Test %d: ", test_nb);
     str = ft_strjoin(s1, s2);
     if (!expected)
     {
         printf("exepected: %p output: %p -> " C_GREEN"Ok!"C_RESET"\n", expected, str);
         assert(str == expected);
-        assert(malloc_usable_size(str) == 0);
+        assert(f(str) == 0);
     }
     else if (expected && str)
     {
         printf("exepected: %s output: %s -> " C_GREEN"Ok! "C_RESET"memory check -> "C_GREEN"Ok!"C_RESET"\n", expected, str);    
         assert(!strcmp(str, expected));
-        assert(malloc_usable_size(str) == malloc_usable_size(expected));
+        assert(f(str) == f(expected));
         free(str);
         free(expected);
     }
