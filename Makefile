@@ -1,6 +1,6 @@
 CC			:=cc
 AR			:=ar -rcs
-GFLAGS		:=-Wall -Wextra -Werror
+GFLAGS		:=-Wall -Wextra -Werror -g
 NAME		:=libft.a
 ASSERT_NAME	:= assert/assert_test
 SRCS		:=	ft_atoi.c \
@@ -62,7 +62,7 @@ as: ${OBJETS_ASSERT}
 	${CC} ${GFLAGS} ${OBJETS_ASSERT} -o ${ASSERT_NAME}
 ifeq (${shell uname} , Darwin)
 	${shell export MallocStackLogging=1}
-	leaks --atExit --  ./assert/assert_test
+	leaks -list  --atExit --  ./assert/assert_test
 else
 	valgrind --leak-check=full -s ./assert/assert_test
 endif

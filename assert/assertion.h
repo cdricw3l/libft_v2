@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assertion.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:21:02 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/03 17:44:17 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/04 08:58:30 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 #define TEST_STAR(f)    printf(C_CYAN"Start test %s\n"C_RESET, f);
 #define TEST_OK(f)      printf(C_GREEN"Test %s: Ok!\n"C_RESET, f);
-#define SEP printf(C_RED"///////////////////////////////////"C_RESET);
+#define SEP printf(C_RED"///////////////////////////////////////////////////////////////////////////"C_RESET);
 #define NL printf("\n");
 
 void str_classification_assert(void);
@@ -42,5 +42,8 @@ void ft_strdup_assert(void);
 void ft_itoa_assert(void);
 void ft_calloc_assert(void);
 void ft_split_assert(void);
+void ft_strchr_assert(void);
+void ft_strrchr_assert(void);
+void ft_striteri_assert(void);
 
 #endif

@@ -1,0 +1,40 @@
+#include "assertion.h"
+
+void iter1(unsigned int i, char *s)
+{
+    if (i % 2 == 0)
+    {
+        if (*s >= 65 && *s <= 90)
+            *s = ft_tolower(*s);
+        else if (*s >= 97 && *s <= 122)
+            *s = ft_toupper(*s); 
+    }
+}
+
+static void ft_striteri_test(int test_nb, char *str, char *expected, void (*f)(unsigned int, char *))
+{
+    char *s;
+    printf("Test %d: ", test_nb);
+    s = ft_strdup(str);
+    assert(s);
+    ft_striteri(s, f);
+    assert(!strcmp(s, expected));
+    printf("expected: %s output %s -> "C_GREEN"Ok!"C_RESET"\n", expected, s);
+    free(s);
+}
+
+void ft_striteri_assert(void)
+{
+    TEST_STAR("ft_striteri");
+    int test_nb;
+
+    test_nb = 1;
+    //Test 1
+    ft_striteri_test(test_nb++, "", "", iter1);
+    ft_striteri_test(test_nb++, "hello_berlin", "HeLlO_BeRlIn",iter1);
+
+    TEST_OK("ft_striteri");
+    SEP;
+    NL;
+    
+}

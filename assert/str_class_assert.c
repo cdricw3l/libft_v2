@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   str_class_assert.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 09:02:37 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/03 15:18:22 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/04 07:18:14 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assertion.h"
 
-#define START -500
-#define END 500
+#define START -5000
+#define END 5000
 
 static void str_classification_test(int(*f)(int), char *f_name, int range_start, int range_end)
 {
