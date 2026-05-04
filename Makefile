@@ -84,8 +84,12 @@ git: fclean
 	git push origin ${shell git branch --show-current}
 
 
-draft:
+draft: ${NAME}
+ifeq (${shell uname}, Darwin)
+	gcc myLibftTester/draft.c -L. -lft -o draft
+else
 	gcc myLibftTester/draft.c -L. -lft -lbsd -o draft
+endif
 
 t: draft
 	./draft
