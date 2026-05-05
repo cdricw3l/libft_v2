@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 17:34:02 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/05 06:55:41 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 07:06:23 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ static void ft_split_test(int test_nb, char **split, ...)
     va_list ap;
     char **ptr;
     char *arg;
+    int memory;
+    int cmp;
+
     
     #ifdef __APPLE__
         size_t (*f)(const void *ptr);
@@ -60,27 +63,41 @@ static void ft_split_test(int test_nb, char **split, ...)
             printf("Test %d: comparaison -> " TEST_NOK " memory -> " TEST_NOK "\n", test_nb);
         else
             printf("Test %d: comparaison -> " TEST_OK " memory -> " TEST_OK "\n", test_nb);
+        clean_split(split);
         return;
     }
-    
+
     printf("Test %d: ",test_nb);
+    memory = 1;
+    cmp = 1;
     while (*ptr)
     {
-        arg = strdup(va_arg(ap, char *));
+        arg = va_arg(ap, char *);
         assert(arg);
-        if(!strcmp(arg, *ptr))
-            printf("comparaison -> " TEST_OK );
-        else
-            printf("comparaison -> " TEST_OK);
-        if(f(*ptr) == f(arg))
-            printf(" memory -> " TEST_OK "\n");
-        else
-            printf(" memory -> " TEST_NOK "\n");
-        free(arg);
+        if(strcmp(arg, *ptr))
+        {
+            cmp = 0;
+            memory = 0;
+            break;
+        }
+        if(f(*ptr) != f(arg))
+        {
+            memory = 1;
+            break;
+        }
+            
         ptr++;
     }
     if(split)
         clean_split(split);
+    if(cmp)
+        printf("comparaison -> " TEST_OK );
+    else
+        printf("comparaison -> " TEST_OK);
+    if(memory)
+        printf(" memory -> " TEST_OK "\n");
+    else
+        printf(" memory -> " TEST_NOK "\n");
     
     va_end(ap);
 }
