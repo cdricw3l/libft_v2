@@ -4,11 +4,14 @@ void ft_strchr_test(int test_nb, char *s, int c)
 {
     char *p1;
     char *p2;
-    printf("Test %d:", test_nb);
+    printf("Test %d:\n", test_nb);
     p1 = strchr(s,c);
     p2 = ft_strchr(s,c);
-    printf(" original -> %p ft -> %p -> " C_GREEN "Ok!"C_RESET "\n", p1, p2);
-    assert(p1 == p2);
+    if(p1 == p2)
+        printf("\toriginal function -> %p\n\tft fonction -> %p\n\tresult -> " TEST_OK "\n", p1, p2);
+    else
+        printf("\toriginal function -> %p\n\tft fonction -> %p\n\tresult -> " TEST_NOK "\n", p1, p2);
+    
 
 }
 
@@ -54,6 +57,7 @@ void ft_strchr_assert(void)
     // Test 10
     ft_strchr_test(test_nb++, s1, INT_MAX);
 
+    NL;
     TEST_END("ft_strchr");
     SEP;
     NL;

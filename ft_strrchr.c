@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 22:23:51 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/05 22:06:16 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 11:37:58 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strrchr(const char *s, int c)
 		return (&((char *)ptr)[len]);
 	while (len > 0)
 	{
-		if (ptr[len - 1] == (unsigned char)c)
+		if ((unsigned char)ptr[len - 1] == (unsigned char)c)
 			return (&((char *)ptr)[len - 1]);
 		len--;
 	}

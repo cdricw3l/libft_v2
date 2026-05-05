@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_class_assert.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 09:02:37 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/05 06:35:53 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 10:56:26 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void str_classification_test(int(*f)(int), char *f_name, int range_start,
     int r;
 
     start = START;
+    r = OK;
     while (start < END)
     {
         if((!strcmp(f_name, "ft_isalpha") && range_start == 97 && start == 65)
@@ -44,24 +45,28 @@ static void str_classification_test(int(*f)(int), char *f_name, int range_start,
         }
         if(start >= range_start && start <= range_end)
         {
-            if((r = f(start)) != 1)
+            if(f(start) != 1)
             {
+                r = NOK;
                 printf("Error fonction %s when value = %d\n expected return 1 but return is %d\n", f_name, start, r);
-                assert(r == 1);
+                break;
             }
         }
         else
         {
-            if((r = f(start)) != 0)
+            if(f(start) != 0)
             {
+                r = NOK;
                 printf("Error fonction %s when value = %d\n expected return 0 but return is %d\n", f_name, start, r);
-                assert(r == 0);
+                break;
             }
         }
-
         start++;
     }
-    printf("Target range: %d to %d ->" C_GREEN " Test OK!\n" C_RESET, range_start, range_end);
+    if (r == OK)
+        printf("Target range: %d to %d ->" TEST_OK"\n", range_start, range_end);
+    else
+        printf("Target range: %d to %d ->" TEST_NOK"\n", range_start, range_end);
 
 
 }
@@ -96,4 +101,6 @@ void str_classification_assert(void)
     TEST_STAR("ft_isprint");
     str_classification_test(ft_isprint, "ft_isprint", 32, 126);
     TEST_END("ft_isprint");
+    SEP;
+    NL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_assert.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 15:30:23 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/05 06:38:27 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 10:43:39 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,17 @@ static void ft_itoa_test(int nb, char *expected, int test_nb)
     s = strdup(expected);
     assert(s);
     ft = ft_itoa(nb);
-    printf("Test %d input: " C_PBG "%d"C_RESET, test_nb,nb);
-    printf(" output -> "C_GBG"%s"C_RESET,ft);
+    printf("Test %d :\n", test_nb);
+    printf("\tinput: " C_PBG "%d"C_RESET"\n",nb);
+    printf("\toutput -> "C_GBG"%s"C_RESET"\n",ft);
     if(!strcmp(s,ft))
-        printf(TEST_OK);
+        printf("\tresult -> "TEST_OK"\n");
     else    
-        printf(TEST_NOK);
+        printf("\tresult -> "TEST_NOK"\n");
     if(f(ft) == f(s))
-        printf("Memory check: -> " TEST_OK "\n");
+        printf("\tMemory check: -> " TEST_OK "\n");
     else
-        printf("Memory check: -> " TEST_NOK "\n");
+        printf("\tMemory check: -> " TEST_NOK "\n");
     free(ft);
     free(s);
 }

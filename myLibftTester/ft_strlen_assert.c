@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen_assert.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 13:06:56 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/05 06:32:15 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 12:21:49 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@ void ft_strlen_test(int test_nb, char *s)
     size_t len1;
     size_t len2;
     
-    printf("Test %d:", test_nb);
+    printf("Test %d:\n", test_nb);
     len1 = strlen(s);
     len2 = ft_strlen(s);
-    printf(" expected measure: %ld measure: %ld -> "C_GREEN"Ok!"C_RESET "\n", len1, len2);
+    if(len1 == len2)
+        printf("\texpected measure: %ld\n\treal measure: %ld\n\tresult -> "TEST_OK "\n", len1, len2);
+    else
+        printf("\texpected measure: %ld\n\treal measure: %ld\n\tresult -> "TEST_NOK "\n", len1, len2);
     assert(len1 == len2);
 }
 
@@ -38,6 +41,7 @@ void ft_strlen_assert(void)
     char str[] = {-10,-10,-10,-10,-10,-10, '\0'};
     ft_strlen_test(test_nb++, str);
 
+    NL;
     TEST_END(test_name);
     SEP;
     NL;

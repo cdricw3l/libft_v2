@@ -6,7 +6,7 @@
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 21:55:13 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/02 19:27:12 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/05 18:33:08 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	src_len;
 	char	*new_str;
 
+
+	/*
+		Why negatif size_t is not casted ??
+		what about start < 0 ? -> start is casted as an unsigned int so start > strlen(s) -> return empty string
+	*/
 	if (!s)
-		return (NULL);
+		return (ft_strdup(""));
 	src_len = ft_strlen(s);
 	if (start > src_len)
 		return (ft_strdup(""));

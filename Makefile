@@ -61,7 +61,7 @@ ${NAME}:	${OBJETS_SRCS}
 as: ${OBJETS_ASSERT}
 	
 ifeq (${shell uname} , Darwin)
-	${CC} ${GFLAGS} ${OBJETS_ASSERT} -o ${ASSERT_NAME}
+	${CC} ${GFLAGS}  ${OBJETS_ASSERT} -o ${ASSERT_NAME}
 	${shell export MallocStackLogging=1}
 	leaks -list  --atExit --  ./${ASSERT_NAME}
 else
@@ -78,10 +78,6 @@ fclean: clean
 
 re: fclean ${NAME}
 
-git: fclean
-	git add .
-	git commit -m ${COM}
-	git push origin ${shell git branch --show-current}
 
 
 draft: ${NAME}
@@ -94,4 +90,22 @@ endif
 t: draft
 	./draft
 
-.PHONY: draft
+
+
+HOME_DIR := /home/cebouhad/Documents/core/libft_home
+CORE_DIR := /home/cebouhad/Documents/core
+COM=generic_comment
+
+git: fclean
+	git add .
+	git commit -m ${COM}
+	git push origin ${shell git branch --show-current}
+
+home:
+	mv ${HOME_DIR}/.git ${CORE_DIR}
+	rm -rf ${HOME_DIR}/*
+	cp -rf * ${HOME_DIR}
+	mv ${CORE_DIR}/.git ${HOME_DIR}
+	echo "Home dir updated"
+	cd ${HOME_DIR} && make git
+.PHONY: draft home

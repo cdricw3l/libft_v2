@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr_assert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 15:53:09 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/05 06:32:44 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 16:01:40 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,24 @@ void ft_strnstr_test(int test_nb, char *haystack, char *needle, size_t len)
         size_t (*f)(void *ptr);
         f = malloc_usable_size;
     #endif
-    printf("Test %d: ", test_nb);
-    s1 = strnstr(haystack,needle, len);
-    s2 = ft_strnstr(haystack,needle, len);
-    if(!s1 && !s2)
-        printf("original return:" C_PBG"%p"C_RESET" ft fonction return : "C_PBG"%p"C_RESET "->"C_GREEN" Ok! "C_RESET"memory check -> "C_GREEN"Ok!"C_RESET"\n", s1, s2);
-    else
+
+    printf("Test %d:", test_nb);
+    s1 = strnstr(haystack, needle, len);
+    s2 = ft_strnstr(haystack, needle, len);
+    if ((!s1 && s2) || (s1 && !s2))
     {
-        assert(!strcmp(s1,s2));
-        assert(f(s1) == f(s2));
-        printf("original return: " C_PBG"%s"C_RESET" ft fonction return : "C_PBG"%s"C_RESET "-> "C_GREEN"Ok! "C_RESET"memory check -> "C_GREEN"Ok!"C_RESET"\n", s1, s2);
+        printf("\n\tstring compare ->"TEST_NOK"\n");
+        return ;
     }
-
-
+    if (!s1 && !s2)
+    {
+        printf("\n\tstring compare ->"TEST_OK"\n");
+        return ;
+    }
+    if (!strcmp(s1,s2))
+        printf("\n\tstring compare ->"TEST_OK"\n");
+    else   
+        printf("\n\tstring compare ->"TEST_NOK"\n");
 }
  
 
@@ -71,7 +76,7 @@ void ft_strnstr_assert(void)
     //Test 11
     ft_strnstr_test(test_nb++, "hello_berlin**", "h", 0);
 
-
+    NL;
     TEST_END(test_name);
     SEP;
     NL;

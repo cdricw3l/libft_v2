@@ -6,7 +6,7 @@
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 06:46:50 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/03 08:39:41 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/05 08:25:37 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+#ifdef __unix__
+	#include <bsd/string.h>
+#endif
 # include <string.h>
 # include <assert.h>
 # include <limits.h>

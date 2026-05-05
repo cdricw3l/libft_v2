@@ -6,7 +6,7 @@
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 00:06:05 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/04 16:50:42 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/05 16:59:29 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	size[2];
 	char	*new_str;
 
+	//check for the return of null string
 	if (!s1)
-		return (NULL);
+		return (ft_strdup(""));
 	if (!set)
 		return (ft_strdup(s1));
 	get_string_size(s1, set, size);

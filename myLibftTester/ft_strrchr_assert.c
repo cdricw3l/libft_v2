@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr_assert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 11:20:06 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/05 06:32:49 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 11:38:46 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ void ft_strrchr_test(int test_nb, char *s, int c)
 {
     char *p1;
     char *p2;
-    printf("Test %d:", test_nb);
-    p1 = strchr(s,c);
-    p2 = ft_strchr(s,c);
-    printf(" original -> %p ft -> %p -> " C_GREEN "Ok!"C_RESET "\n", p1, p2);
-    assert(p1 == p2);
-
+    printf("Test %d:\n", test_nb);
+    p1 = strrchr(s,c);
+    p2 = ft_strrchr(s,c);
+    if(p1 == p2)
+        printf("\toriginal function -> %p\n\tft fonction -> %p\n\tresult -> " TEST_OK "\n", p1, p2);
+    else
+        printf("\toriginal function -> %p\n\tft fonction -> %p\n\tresult -> " TEST_NOK "\n", p1, p2);
+    
 }
 
 
@@ -46,22 +48,24 @@ void ft_strrchr_assert(void)
     ft_strrchr_test(test_nb++, str, 'b');
     // Test 5
     ft_strrchr_test(test_nb++, str, '\0');
-    // Test 6
     free(str);
+    
     str = ft_strdup("");
     assert(str);
-    // Test 7
+    // Test 6
     ft_strrchr_test(test_nb++, str, '\0');
-    // Test 8
+    // Test 7
     ft_strrchr_test(test_nb++, str, 'A');
     free(str);
+    
     char s0[] = {-10, -12, -127, 32, 97, 98, -127, '\0'};
-    // Test 9
+    // Test 8
     ft_strrchr_test(test_nb++, s0, -127);
     char s1[] = {-10, -12, -127, 32, 97, 98,'\0'};
-    // Test 10
+    // Test 9
     ft_strrchr_test(test_nb++, s1, INT_MAX);
-
+    
+    NL;
     TEST_END("ft_strrchr");
     SEP;
     NL;

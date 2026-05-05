@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup_assert.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 15:02:53 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/05 06:31:58 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 10:49:11 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,27 @@
 
 void test_and_clean_str(char *s1, char *s2, int test_nb)
 {
+    #ifdef __APPLE__
+        size_t (*f)(const void *ptr);
+        f = malloc_size;
+    #else
+        size_t (*f)(void *ptr);
+        f = malloc_usable_size;
+    #endif
+    
+    printf("test %d : \n", test_nb);
     if(s1 && s2)
     {
         assert(!strcmp(s1,s2));
-        #ifdef __unix__
-            assert(malloc_usable_size(s1) == malloc_usable_size(s2));
-        #else
-            assert(malloc_size(s1) == malloc_size(s2));
-        #endif
+        if(!strcmp(s1,s2))
+            printf("\tstring compare ->" TEST_OK"\n"); 
+        else
+            printf("\tstring compare ->" TEST_NOK"\n"); 
+        if (f(s1) == f(s2))
+            printf("\tmemory size allocation -> " TEST_OK "\n");
+        else
+            printf("\tmemory size allocation-> " TEST_NOK "\n");
     }
-    printf("test %d :" "string are the same comparaison ->" C_GREEN " OK!" C_RESET " memory allocation size are the same -> "C_GREEN "OK!\n" C_RESET, test_nb);
-    
     if(s1)
     {
         free(s1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri_assert.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 11:20:23 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/05 06:32:04 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 10:54:33 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,47 @@ void iter2(unsigned int i, char *s)
 
 static void ft_striteri_test(int test_nb, char *str, char *expected, void (*f)(unsigned int, char *))
 {
-    char *s;
-    printf("Test %d: ", test_nb);
-    if(str)
+    int     r;
+    char    *s_expect;
+    char    *s_iteri;
+    
+    r = -1;
+    printf("Test %d: \n", test_nb);
+    
+    ft_striteri(str, f);
+    
+    if(expected)
     {
-        s = ft_strdup(str);
-        assert(s);
+        if(!str)
+            printf("strdup allocation error\n");
+        else if(!strcmp(str, expected))
+            r = OK;
+        else
+            r = NOK;
+        if(str && !strlen(str))
+            s_iteri = EMPTY_STR;
+        else
+            s_iteri = str;
+        if(expected && !strlen(expected))
+            s_expect = EMPTY_STR;
+        else
+            s_expect = expected;
     }
     else
-        s = NULL;
-    ft_striteri(s, f);
-    if(expected)
-        assert(!strcmp(s, expected));
+    {
+        if (expected == str)
+            r = OK;
+        else
+            r = NOK;
+        s_expect = NULL_STR;
+        s_iteri = NULL_STR;
+    }
+    if(r == OK)
+        printf("\texpected: %s\n\toutput: %s\n\tstring comparare -> "TEST_OK"\n", s_expect, s_iteri);
     else
-        assert(s == expected);
-    printf("expected: %s output: %s -> "C_GREEN"Ok!"C_RESET"\n", expected, s);
-    free(s);
+        printf("\texpected: %s\n\toutput: %s\n\tstring comparare -> "TEST_NOK"\n", s_expect, s_iteri);
+    if (str)
+        free(str);
 }
 
 void ft_striteri_assert(void)
@@ -56,18 +81,17 @@ void ft_striteri_assert(void)
 
     test_nb = 1;
     //Test 1
-    ft_striteri_test(test_nb++, "", "", iter1);
+    ft_striteri_test(test_nb++, ft_strdup(""), "", iter1);
     //Test 2
-    ft_striteri_test(test_nb++, "hello_berlin", "HeLlO_BeRlIn", iter1);
+    ft_striteri_test(test_nb++, ft_strdup("hello_berlin"), "HeLlO_BeRlIn", iter1);
     //Test 3
-    ft_striteri_test(test_nb++, "hello_berlin", "hello_berlin", NULL);
+    ft_striteri_test(test_nb++, ft_strdup("hello_berlin"), "hello_berlin", NULL);
     //Test 4
-    ft_striteri_test(test_nb++, "hello_berlin", "", iter2);
+    ft_striteri_test(test_nb++, ft_strdup("hello_berlin"), "", iter2);
     //Test 5
     ft_striteri_test(test_nb++, NULL, NULL, NULL);
     //Test 6
     ft_striteri_test(test_nb++, NULL, NULL, iter1);
-
     TEST_END("ft_striteri");
     SEP;
     NL;

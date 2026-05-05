@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_assert.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 14:35:56 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/05 06:34:52 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 10:40:04 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,24 @@ static void ft_atoi_test(char *s, int test_nb)
 
     original = atoi(s);
     ft = atoi(s);
+    printf("Test %d:\n", test_nb);
     if(original == ft)
     {
-        printf("Test %d input:" C_PBG "%s"C_RESET, test_nb,s);
-        printf(" original output:" C_BBG"%d"C_RESET, original);
-        printf(" ft output:" C_GBG"%d"C_RESET" -> " TEST_OK "\n", ft);
+        printf("\tinput:" C_PBG "%s"C_RESET"\n",s);
+        printf("\tatoi output:" C_BBG"%d"C_RESET"\n", original);
+        printf("\tft_atoi output:" C_BBG"%d"C_RESET"\n\tresult -> " TEST_OK "\n", ft);
     }
     else
     {
-        printf("Test %d input:" C_PBG "%s"C_RESET, test_nb,s);
-        printf(" original output:" C_BBG"%d"C_RESET, original);
-        printf(" ft output:" C_GBG"%d"C_RESET" -> " TEST_NOK "\n", ft);
+        printf("\tinput:" C_PBG "%s"C_RESET"\n",s);
+        printf("\tatoi output:" C_BBG"%d"C_RESET"\n", original);
+        printf("\tft_atoi output:" C_BBG"%d"C_RESET"\n\t result -> " TEST_NOK "\n", ft);
     }
-    
     
 }
 
 void ft_atoi_assert(void)
 {
-    SEP;
-    NL;
     TEST_STAR("ft_atoi");
     int test_nb;
 

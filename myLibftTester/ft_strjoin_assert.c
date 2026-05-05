@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin_assert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 12:07:54 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/05 06:32:07 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 12:10:43 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void ft_strjoin_test(int test_nb, char *s1, char *s2, char *expected)
 {
 
     char *str;
+    char *s_expect;
+    char *s_joint;
 
     #ifdef __APPLE__
         size_t (*f)(const void *ptr);
@@ -25,19 +27,29 @@ void ft_strjoin_test(int test_nb, char *s1, char *s2, char *expected)
         f = malloc_usable_size;
     #endif
 
-    printf("Test %d: ", test_nb);
+    printf("Test %d:\n", test_nb);
     str = ft_strjoin(s1, s2);
-    if (!expected)
+    if(!str)
+        printf("Error memory allocation in ft_strjoin\n");
+    if (expected && str)
     {
-        printf("exepected: %p output: %p -> " C_GREEN"Ok!"C_RESET"\n", expected, str);
-        assert(str == expected);
-        assert(f(str) == 0);
-    }
-    else if (expected && str)
-    {
-        printf("exepected: %s output: %s -> " C_GREEN"Ok! "C_RESET"memory check -> "C_GREEN"Ok!"C_RESET"\n", expected, str);    
-        assert(!strcmp(str, expected));
-        assert(f(str) == f(expected));
+        if (!strlen(expected))
+            s_expect = EMPTY_STR;
+        else
+            s_expect = expected;
+        if(!strlen(str))
+            s_joint = EMPTY_STR;
+        else
+            s_joint = str;
+
+        if(!strcmp(str, expected))
+            printf("\texpected: %s\n\toutput: %s\n\tstring compare -> " TEST_OK"\n", s_expect, s_joint);  
+        else
+            printf("\texpected: %s\n\toutput: %s\n\tstring compare -> " TEST_NOK"\n", s_expect, s_joint);
+        if(f(str) == f(expected))
+            printf("\tmemory size allocation ->"TEST_OK"\n");
+        else
+            printf("\tmemory size allocation ->"TEST_NOK"\n");
         free(str);
         free(expected);
     }
@@ -59,6 +71,7 @@ void ft_strjoin_assert(void)
     ft_strjoin_test(test_nb++, "         424242    ", "     424242", strdup("         424242         424242"));
     ft_strjoin_test(test_nb++, NULL, NULL, strdup(""));
 
+    NL;
     TEST_END(test_name);
     SEP;
     NL;
