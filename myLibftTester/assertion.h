@@ -6,7 +6,7 @@
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:21:02 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/05 17:12:12 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/05 19:02:06 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void ft_itoa_assert(void);
 
 void ft_tolower_assert(void);
 void ft_toupper_assert(void);
+void ft_putchar_assert(void);
 void ft_putchar_assert(void);
 
 #endif

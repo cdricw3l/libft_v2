@@ -6,7 +6,7 @@
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:20:37 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/05 18:45:22 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/05 19:02:15 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int main(void)
     //ft_tolower_assert();
     //ft_toupper_assert();
     //ft_substr_assert();
-    
+    ft_putchar_assert();
     
     //On progress
     //ft_calloc_assert();
