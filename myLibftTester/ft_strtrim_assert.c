@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 16:35:13 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/04 20:11:19 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 06:32:53 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void ft_strtrim_assert(void)
     free(s1);
     free(s2);
 
-    TEST_OK(test_name);
+    TEST_END(test_name);
     SEP;
     NL;
 

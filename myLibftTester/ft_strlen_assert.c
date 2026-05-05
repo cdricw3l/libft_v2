@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen_assert.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 13:06:56 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/04 13:21:59 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/05 06:32:15 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void ft_strlen_assert(void)
     char str[] = {-10,-10,-10,-10,-10,-10, '\0'};
     ft_strlen_test(test_nb++, str);
 
-    TEST_OK(test_name);
+    TEST_END(test_name);
     SEP;
     NL;
 }

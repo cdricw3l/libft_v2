@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 15:53:09 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/04 20:10:45 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 06:32:44 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void ft_strnstr_assert(void)
     ft_strnstr_test(test_nb++, "hello_berlin**", "h", 0);
 
 
-    TEST_OK(test_name);
+    TEST_END(test_name);
     SEP;
     NL;
 }

@@ -54,7 +54,7 @@ void ft_strchr_assert(void)
     // Test 10
     ft_strchr_test(test_nb++, s1, INT_MAX);
 
-    TEST_OK("ft_strchr");
+    TEST_END("ft_strchr");
     SEP;
     NL;
 

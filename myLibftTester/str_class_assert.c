@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 09:02:37 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/04 07:18:14 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 06:35:53 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,27 +73,27 @@ void str_classification_assert(void)
     TEST_STAR("ft_isalpha");
     str_classification_test(ft_isalpha, "ft_isalpha", 65, 90);
     str_classification_test(ft_isalpha, "ft_isalpha", 97, 122);
-    TEST_OK("ft_isalpha");
+    TEST_END("ft_isalpha");
     SEP;
     NL;
     TEST_STAR("ft_isdigit");
     str_classification_test(ft_isdigit, "ft_isdigit", 48, 57);
-    TEST_OK("ft_isdigit");
+    TEST_END("ft_isdigit");
     SEP;
     NL;
     TEST_STAR("ft_isalnum");
     str_classification_test(ft_isalnum, "ft_isalnum", 48, 57);
     str_classification_test(ft_isalnum, "ft_isalnum", 65, 90);
     str_classification_test(ft_isalnum, "ft_isalnum", 97, 122);
-    TEST_OK("ft_isalnum");
+    TEST_END("ft_isalnum");
     SEP;
     NL;
     TEST_STAR("ft_isascii");
     str_classification_test(ft_isascii, "ft_isascii", 0, 127);
-    TEST_OK("ft_isascii");
+    TEST_END("ft_isascii");
     SEP;
     NL;
     TEST_STAR("ft_isprint");
     str_classification_test(ft_isprint, "ft_isprint", 32, 126);
-    TEST_OK("ft_isprint");
+    TEST_END("ft_isprint");
 }

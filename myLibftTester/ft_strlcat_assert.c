@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 13:22:42 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/04 20:10:12 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 06:32:11 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void ft_strlcat_assert(void)
     assert(!strcmp(b11, b12));
 
     
-    TEST_OK(test_name);
+    TEST_END(test_name);
     SEP;
     NL;
 }

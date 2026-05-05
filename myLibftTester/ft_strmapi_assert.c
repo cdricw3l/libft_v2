@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi_assert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 11:20:23 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/04 12:06:14 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/05 06:32:19 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void ft_strmapi_assert(void)
     //Test 6
     ft_strmapi_test(test_nb++, NULL, NULL, iter3);
 
-    TEST_OK("ft_strmapi");
+    TEST_END("ft_strmapi");
     SEP;
     NL;
     

@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 15:02:53 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/03 20:58:42 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 06:31:58 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void ft_strdup_assert(void)
     s2 = ft_strdup(b2);
     test_and_clean_str(s1,s2, test_nb++);
     
-    TEST_OK("ft_strdup");
+    TEST_END("ft_strdup");
     SEP;
     NL;
 }

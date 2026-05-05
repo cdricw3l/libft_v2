@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri_assert.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 11:20:23 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/04 11:20:25 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/05 06:32:04 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void ft_striteri_assert(void)
     //Test 6
     ft_striteri_test(test_nb++, NULL, NULL, iter1);
 
-    TEST_OK("ft_striteri");
+    TEST_END("ft_striteri");
     SEP;
     NL;
     

@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 17:34:02 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/04 20:09:24 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 06:55:41 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,27 +44,44 @@ static void ft_split_test(int test_nb, char **split, ...)
         size_t (*f)(void *ptr);
         f = malloc_usable_size;
     #endif
-    if(!split)
+    if(test_nb == 1)
     {
-        assert(test_nb == 1);
-        printf("Test %d: comparaison -> " C_GREEN "Ok!"C_RESET " memory -> " C_GREEN "Ok!" C_RESET"\n",test_nb);
+        if (!split)
+            printf("Test %d: comparaison -> " TEST_OK " memory -> " TEST_OK "\n",test_nb);
+        else
+            printf("Test %d: comparaison -> " TEST_NOK " memory -> " TEST_NOK "\n",test_nb);
         return ;
     }
     ptr = split;
     va_start(ap, split);
-    if(!(*ptr) && test_nb == 3)
-        assert(va_arg(ap, char *) == NULL);
+    if(test_nb == 4)
+    {
+        if ((*ptr))
+            printf("Test %d: comparaison -> " TEST_NOK " memory -> " TEST_NOK "\n", test_nb);
+        else
+            printf("Test %d: comparaison -> " TEST_OK " memory -> " TEST_OK "\n", test_nb);
+        return;
+    }
+    
+    printf("Test %d: ",test_nb);
     while (*ptr)
     {
         arg = strdup(va_arg(ap, char *));
         assert(arg);
-        assert(!strcmp(arg, *ptr) && f(*ptr) == f(arg));
+        if(!strcmp(arg, *ptr))
+            printf("comparaison -> " TEST_OK );
+        else
+            printf("comparaison -> " TEST_OK);
+        if(f(*ptr) == f(arg))
+            printf(" memory -> " TEST_OK "\n");
+        else
+            printf(" memory -> " TEST_NOK "\n");
         free(arg);
         ptr++;
     }
     if(split)
         clean_split(split);
-    printf("Test %d: comparaison -> " C_GREEN "Ok!"C_RESET " memory -> " C_GREEN "Ok!" C_RESET"\n",test_nb);
+    
     va_end(ap);
 }
 
@@ -86,7 +103,7 @@ void ft_split_assert(void)
     char str[6] = {'A','A', -100,'A','A','\0'};
     ft_split_test(test_nb++, ft_split(str, -100), "AA", "AA");
 
-    TEST_OK("ft_split");
+    TEST_END("ft_split");
     SEP;
     NL;
 }

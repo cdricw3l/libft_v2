@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 12:07:54 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/04 20:09:53 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 06:32:07 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void ft_strjoin_assert(void)
     ft_strjoin_test(test_nb++, "         424242    ", "     424242", strdup("         424242         424242"));
     ft_strjoin_test(test_nb++, NULL, NULL, strdup(""));
 
-    TEST_OK(test_name);
+    TEST_END(test_name);
     SEP;
     NL;
 }

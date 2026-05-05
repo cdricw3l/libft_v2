@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:21:02 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/04 20:07:57 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 06:34:15 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@
 #define C_RESET "\e[0m"
 
 #define TEST_STAR(f)    printf(C_CYAN"Start test %s\n"C_RESET, f);
-#define TEST_OK(f)      printf(C_GREEN"Test %s: Ok!\n"C_RESET, f);
+#define TEST_END(f)      printf(C_GREEN"Test %s: Ok!\n"C_RESET, f);
+#define TEST_OK C_GREEN" Ok! "C_RESET
+#define TEST_NOK C_RED" NOk! "C_RESET
 #define SEP printf(C_RED"///////////////////////////////////////////////////////////////////////////"C_RESET);
 #define NL printf("\n");
 

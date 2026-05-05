@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 15:30:23 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/04 20:09:06 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/05 06:38:27 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@ static void ft_itoa_test(int nb, char *expected, int test_nb)
     ft = ft_itoa(nb);
     printf("Test %d input: " C_PBG "%d"C_RESET, test_nb,nb);
     printf(" output -> "C_GBG"%s"C_RESET,ft);
-    assert(!strcmp(s,ft));
-    printf(C_GREEN" OK! "C_RESET);
-    assert(f(ft) == f(s));
-    printf("Memory check: -> " C_GREEN "OK!\n"C_RESET);
+    if(!strcmp(s,ft))
+        printf(TEST_OK);
+    else    
+        printf(TEST_NOK);
+    if(f(ft) == f(s))
+        printf("Memory check: -> " TEST_OK "\n");
+    else
+        printf("Memory check: -> " TEST_NOK "\n");
     free(ft);
     free(s);
 }
@@ -54,7 +58,7 @@ void ft_itoa_assert(void)
     ft_itoa_test(012,"10", test_nb++);
     ft_itoa_test(0166,"118", test_nb++);
     ft_itoa_test(0xA,"10", test_nb++);
-    TEST_OK("ft_itoa");
+    TEST_END("ft_itoa");
     SEP;
     NL;
 }

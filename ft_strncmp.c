@@ -3,19 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 17:02:35 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/04 18:35:46 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/05 06:17:29 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *p1, const char *p2, size_t n)
 {
 	size_t	i;
+	register char *s1;
+	register char *s2;
 
+	s1 = (char *)p1;
+	s2 = (char *)p2;
 	i = 0;
 	if (n == 0)
 		return (0);
@@ -31,7 +35,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		
 		*/
 		/*
-			2nd point: 
+			2nd point:
+			in unix systeme,
 			when the fonction strncmp compare read only string, she return -1 or 1 else she return the difference between s1[i] and s2[i]
 
 		*/

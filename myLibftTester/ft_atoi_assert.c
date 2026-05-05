@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_assert.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 14:35:56 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/03 16:36:18 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/05 06:34:52 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,19 @@ static void ft_atoi_test(char *s, int test_nb)
 
     original = atoi(s);
     ft = atoi(s);
-    printf("Test %d input:" C_PBG "%s"C_RESET, test_nb,s);
-    printf(" original output:" C_BBG"%d"C_RESET, original);
-    printf(" ft output:" C_GBG"%d"C_RESET"\n", ft);
-    assert(original == ft);
+    if(original == ft)
+    {
+        printf("Test %d input:" C_PBG "%s"C_RESET, test_nb,s);
+        printf(" original output:" C_BBG"%d"C_RESET, original);
+        printf(" ft output:" C_GBG"%d"C_RESET" -> " TEST_OK "\n", ft);
+    }
+    else
+    {
+        printf("Test %d input:" C_PBG "%s"C_RESET, test_nb,s);
+        printf(" original output:" C_BBG"%d"C_RESET, original);
+        printf(" ft output:" C_GBG"%d"C_RESET" -> " TEST_NOK "\n", ft);
+    }
+    
     
 }
 
@@ -58,7 +67,7 @@ void ft_atoi_assert(void)
     ft_atoi_test(str1, test_nb++);
     char str2[] = {-45, 52,50,-10};
     ft_atoi_test(str2, test_nb++);
-    TEST_OK("ft_atoi");
+    TEST_END("ft_atoi");
     SEP;
     NL;
 }
