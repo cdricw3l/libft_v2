@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assertion.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:21:02 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/05 19:02:06 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/06 09:05:24 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
     #include <bsd/string.h>
 #endif
 #include <string.h>
+#include <pthread.h>
 
 
 #define C_RED "\e[0;31;1m"
@@ -75,5 +76,9 @@ void ft_tolower_assert(void);
 void ft_toupper_assert(void);
 void ft_putchar_assert(void);
 void ft_putchar_assert(void);
+
+
+//lst
+void ft_lst_new_assert(void);
 
 #endif

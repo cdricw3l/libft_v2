@@ -108,4 +108,5 @@ home:
 	mv ${CORE_DIR}/.git ${HOME_DIR}
 	echo "Home dir updated"
 	cd ${HOME_DIR} && make git
+
 .PHONY: draft home

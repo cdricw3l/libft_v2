@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr_assert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 15:53:09 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/05 16:01:40 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/05 22:24:21 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,6 @@ void ft_strnstr_test(int test_nb, char *haystack, char *needle, size_t len)
     char *s1;
     char *s2;
 
-    #ifdef __APPLE__
-        size_t (*f)(const void *ptr);
-        f = malloc_size;
-    #else
-        size_t (*f)(void *ptr);
-        f = malloc_usable_size;
-    #endif
 
     printf("Test %d:", test_nb);
     s1 = strnstr(haystack, needle, len);
