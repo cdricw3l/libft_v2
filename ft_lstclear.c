@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 23:48:43 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/09 23:56:25 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/06 09:45:51 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		tmp = root;
 		root = root->next;
 		del(tmp->content);
-		free(tmp);
+		del(tmp);
 	}
 	*lst = NULL;
 }

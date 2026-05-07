@@ -47,9 +47,6 @@ void ft_lstnew_test(int test_nb, void *content)
 
 void ft_lst_new_assert(void)
 {
-
-    
-
     char *test_name = "ft_lst_new";
     int test_nb;
     TEST_STAR(test_name);
@@ -64,7 +61,6 @@ void ft_lst_new_assert(void)
     free(str);
 
     //test 2
-
     r = 10;
     ft_lstnew_test(test_nb++,&r);
 

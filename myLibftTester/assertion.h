@@ -6,7 +6,7 @@
 /*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:21:02 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/06 09:05:24 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/06 11:29:59 by cdric.b          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #endif
 #include <string.h>
 #include <pthread.h>
+
 
 
 #define C_RED "\e[0;31;1m"
@@ -80,5 +81,6 @@ void ft_putchar_assert(void);
 
 //lst
 void ft_lst_new_assert(void);
+void ft_lstdelone_assert(void);
 
 #endif
