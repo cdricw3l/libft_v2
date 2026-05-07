@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp_assert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 17:33:33 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/05 06:32:40 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/07 20:53:21 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,31 @@ static void ft_strncmp_test(int test_nb, char *s1, char *s2, size_t n)
 {
     int r1;
     int r2;
+    char *str1;
+    char *str2;
 
-    printf("Test %d: ", test_nb);
-    r1 = ft_strncmp(s1, s2, n);
-    r2 = strncmp(s1, s2, n);
+    str1 = ft_strdup(s1);
+    if(!str1)
+    {
+        printf("Error allocation in %s ligne: %d\n", __func__, __LINE__);
+        return ;
+    }
+    str2 = ft_strdup(s2);
+    if(!str2)
+    {
+        free(str1);
+        printf("Error allocation in %s line: %d\n", __func__, __LINE__);
+        return ;
+    }
+    printf("Test %d:\n", test_nb);
+    r1 = ft_strncmp(str1, str2, n);
+    r2 = strncmp(str1, str2, n);
     if(r1 == r2)
-        printf("original output: %d ft output: %d -> "C_GREEN "Ok!"C_RESET"\n",r1,r2);
+        printf("\toriginal fonction return: %d\n\tft output: %d\n\t-> "TEST_OK"\n",r2,r1);
     else
-        printf("original output: %d ft output: %d -> "C_RED "NOk!"C_RESET"\n",r1,r2);
-    free(s1);
-    free(s2);
+        printf("\toriginal output: %d\n\tft fonction output: %d\n\t-> "TEST_NOK"\n",r2,r1);
+    free(str1);
+    free(str2);
 }
 
 void ft_strncmp_assert(void)
@@ -35,23 +50,35 @@ void ft_strncmp_assert(void)
     int test_nb;
 
     test_nb = 1;
+    //TEST 1
+    ft_strncmp_test(test_nb++ ,"hello_berlin", "hello_berlin", strlen("hello_berlin"));
+    //TEST 2
+    ft_strncmp_test(test_nb++ ,"hello_berlin", "hello_berlin", 0);
+    //TEST 3
+    ft_strncmp_test(test_nb++ ,"hello_berlin", "hello_berlin", 1000);
+    //TEST 4
+    ft_strncmp_test(test_nb++ ,"hello_berlin42", "hello_berlin", 1000);
+    //TEST 5
+    ft_strncmp_test(test_nb++ ,"hello_berlin", "hello_berlin42", strlen("hello_berlin"));
+    //TEST 6
+    ft_strncmp_test(test_nb++ ,"hello_berlin", "hello_b", strlen("hello_berlin"));
+    //TEST 7
+    ft_strncmp_test(test_nb++ ,"hello_berlin", "hello_b", strlen("hello_b"));
     
-    ft_strncmp_test(test_nb++ ,strdup("hello_berlin"), strdup("hello_berlin"), strlen("hello_berlin"));
-    ft_strncmp_test(test_nb++ ,strdup("hello_berlin"), strdup("hello_berlin"), 0);
-    ft_strncmp_test(test_nb++ ,strdup("hello_berlin"), strdup("hello_berlin"), 1000);
-    ft_strncmp_test(test_nb++ ,strdup("hello_berlin42"), strdup("hello_berlin"), 1000);
-    ft_strncmp_test(test_nb++ ,strdup("hello_berlin"), strdup("hello_berlin42"), strlen("hello_berlin"));
-    ft_strncmp_test(test_nb++ ,strdup("hello_berlin"), strdup("hello_b"), strlen("hello_berlin"));
-    ft_strncmp_test(test_nb++ ,strdup("hello_berlin"), strdup("hello_b"), strlen("hello_b"));
+    //TEST 8
     char str[] = {-10,-55,-128,-32, 55, 127, 255, '\0'};
-    ft_strncmp_test(test_nb++ ,strdup(str), strdup(str), strlen(str));
-    ft_strncmp_test(test_nb++ , strdup(str), strdup(&str[2]), -1);
-
-
+    ft_strncmp_test(test_nb++ ,str, str, strlen(str));
+    //TEST 9
+    ft_strncmp_test(test_nb++ , str, &str[2], -1);
     
-    ft_strncmp_test(test_nb++ ,strdup(str), strdup("hello_berlin"), 10);
-    ft_strncmp_test(test_nb++ ,strdup("hello_berlin"), strdup(str), 10);
-    ft_strncmp_test(test_nb++ ,strdup("          "), strdup("          42"), strlen("          "));
+    
+    
+    //TEST 10
+    ft_strncmp_test(test_nb++ ,str, "hello_berlin", 10);
+    //TEST 11
+    ft_strncmp_test(test_nb++ ,"hello_berlin", str, 10);
+    //TEST 12
+    ft_strncmp_test(test_nb++ ,"          ", "          42", strlen("          "));
 
 
     TEST_END(test_name);

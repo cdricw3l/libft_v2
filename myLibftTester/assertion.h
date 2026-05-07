@@ -6,7 +6,7 @@
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:21:02 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/07 14:52:55 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/07 22:42:20 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@
 #define SEP                 printf(C_RED"///////////////////////////////////////////////////////////////////////////"C_RESET);
 #define NL                  printf("\n");
 
+typedef struct s_test
+{
+    void *content;
+    void *next;
+
+} t_test;
+
 //classification
 void str_classification_assert(void);
 
@@ -68,7 +75,13 @@ void ft_strncmp_assert(void);
 void ft_substr_assert(void);
 
 //memory
+void ft_bzero_assert(void);
+void ft_memset_assert(void);
 void ft_calloc_assert(void);
+void ft_memchr_assert(void);
+void ft_memcpy_assert(void);
+void ft_memcmp_assert(void);
+void ft_memove_assert(void);
 
 //other
 void ft_atoi_assert(void);
@@ -76,8 +89,8 @@ void ft_itoa_assert(void);
 
 void ft_tolower_assert(void);
 void ft_toupper_assert(void);
-void ft_putchar_assert(void);
-void ft_putchar_assert(void);
+void ft_putstr_assert(void);
+void ft_putendl_assert(void);
 
 
 //lst
@@ -85,8 +98,11 @@ void ft_lst_new_assert(void);
 void ft_lstdelone_assert(void);
 void ft_lstclear_assert(void);
 void ft_lstsize_assert(void);
-
-
+void ft_lstlast_assert(void);
+void ft_lstadd_back_assert(void);
+void ft_lstadd_front_assert(void);
+void ft_lstiter_assert(void);
+void ft_lstmap_assert(void);
 //utils
 
 void    delete_split(void *ptr);
@@ -94,5 +110,6 @@ void    delete_tab(void *ptr);
 int     **create_arr(int nb, int term);
 void    delete_str(void *ptr);
 void    delete_lst(t_list *list);
-t_list  *create_lst(size_t size);
+t_list  *create_lst(size_t size, void *content);
+void    string_capitalise(void *ptr);
 #endif

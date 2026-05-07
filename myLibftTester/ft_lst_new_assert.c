@@ -1,11 +1,5 @@
 #include "assertion.h"
 
-typedef struct s_test
-{
-    void *content;
-    void *next;
-} t_test;
-
 void ft_lstnew_test(int test_nb, void *content)
 {
     t_list *node;

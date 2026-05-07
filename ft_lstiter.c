@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 23:57:03 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/03/30 06:45:01 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/07 18:00:16 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (!lst || !f)
+	if (!f)
 		return ;
+	// check of lst poiteur not needed . If lst = NULL -> no loop;
 	while (lst)
 	{
 		f(lst->content);

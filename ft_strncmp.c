@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 17:02:35 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/05 06:17:29 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/07 21:00:27 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	ft_strncmp(const char *p1, const char *p2, size_t n)
 {
 	size_t	i;
-	register char *s1;
-	register char *s2;
+	char *s1;
+	char *s2;
 
 	s1 = (char *)p1;
 	s2 = (char *)p2;

@@ -58,6 +58,9 @@ OBJETS_ASSERT	:=	${SRCS_ASSERT:.c=.o} ${OBJETS_SRCS}
 ${NAME}:	${OBJETS_SRCS}
 	${AR} ${NAME} ${OBJETS_SRCS}
 
+
+
+
 as: ${OBJETS_ASSERT}
 	
 ifeq (${shell uname} , Darwin)
@@ -75,6 +78,8 @@ clean:
 
 fclean: clean
 	rm -f ${NAME} ${ASSERT_NAME} draft
+
+all: ${NAME} 
 
 re: fclean ${NAME}
 

@@ -6,7 +6,7 @@
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 14:36:49 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/07 15:00:04 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/07 17:43:37 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void ft_lstsize_test(int test_number, size_t size)
     int r;
 
     printf("Test %d:\n", test_number);
-    list = create_lst(size);
+    list = create_lst(size, NULL);
     if (!list && size > 0)
     {
         printf("Error list creation in %s\n", __func__ );

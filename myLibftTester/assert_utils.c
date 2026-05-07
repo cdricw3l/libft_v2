@@ -6,7 +6,7 @@
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 13:23:13 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/07 14:55:14 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/07 18:09:45 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int **create_arr(int nb, int term)
     return (tab);
 }
 
-t_list * create_lst(size_t size)
+t_list * create_lst(size_t size, void *content)
 {
     size_t i;
     t_list *root;
@@ -106,7 +106,7 @@ t_list * create_lst(size_t size)
     root = NULL;
     while (i < size)
     {
-        node = ft_lstnew(NULL);
+        node = ft_lstnew(content);
         if(!node)
         {
             while (root)
@@ -137,5 +137,20 @@ void delete_lst(t_list *list)
         tmp = list;
         list = list->next;
         free(tmp);
+    }
+}
+
+void string_capitalise(void *ptr)
+{
+    char *str;
+    int i;
+
+    str = (char *)ptr;
+    i = 0;
+    while (str[i])
+    {
+        if(str[i] >= 97 && str[i] <= 122)
+            str[i] = str[i] - 32;
+        i++;
     }
 }

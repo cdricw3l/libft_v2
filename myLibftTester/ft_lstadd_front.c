@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_assert.c                                :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/07 15:00:40 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/07 17:43:20 by cebouhad         ###   ########.fr       */
+/*   Created: 2026/05/07 16:24:03 by cebouhad          #+#    #+#             */
+/*   Updated: 2026/05/07 17:22:12 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assertion.h"
 
-void ft_lstlast_test(int test_nb, t_list *lst ,void *ptr)
+void ft_lstadd_front_test(int test_number,t_list **liste, t_list *node)
 {
-    t_list  *last;
-    pid_t   frk;
-    int     stat;
-
-    printf("Test %d:\n", test_nb);
-    if (!lst)
+    pid_t frk;
+    int stat;
+    
+    printf("Test %d:\n", test_number);
+    if (!liste || !node)
     {
         frk = fork();
         if( frk < 0)
@@ -29,7 +28,7 @@ void ft_lstlast_test(int test_nb, t_list *lst ,void *ptr)
         }
         if(frk == 0)
         {
-            ft_lstlast(lst);
+            ft_lstadd_front(liste,node);
             exit(0);
         }
         else
@@ -44,40 +43,47 @@ void ft_lstlast_test(int test_nb, t_list *lst ,void *ptr)
     }
     else
     {
-        last = ft_lstlast(lst);
-        if (last == ptr)
-            printf("\tget the last node ->"TEST_OK"\n");
+        ft_lstadd_front(liste, node);
+        
+        if (*liste == node)
+            printf("\tlst add front ->"TEST_OK"\n");
         else
-            printf("\tget the last node ->"TEST_NOK"\n");
+            printf("\tlst add front ->"TEST_NOK"\n");
     }
+
 }
 
-void ft_lstlast_assert(void)
+void ft_lstadd_front_assert(void)
 {
-    
-    char *test_name = "ft_lstlast";
-    
+    char *test_name = "lstadd_front";
     TEST_STAR(test_name);
-
     int test_number;
-
-    test_number = 1;
-
     t_list *list;
     t_list *node;
+    test_number = 1;
 
-    list = create_lst(1, NULL);
+    list = create_lst(5, NULL);
+    if(!list)
+    {
+        printf("Error creation list in %s\n",__func__);
+        return ;
+    }
     node = ft_lstnew(NULL);
     if(!node)
     {
-        printf("Error node creation in %s", __func__);
+        printf("Error creation node in %s\n", __func__);
         delete_lst(list);
+        return ;
     }
-    ft_lstadd_back(&list, node);
-    ft_lstlast_test(test_number++, list, node);
-    ft_lstlast_test(test_number++, NULL, node);
+    //TEST 1
+    ft_lstadd_front_test(test_number++, &list, node);
+    //TEST 2
+    ft_lstadd_front_test(test_number++, &list, NULL);
+    //TEST 2
+    ft_lstadd_front_test(test_number++, NULL, node);
+
     delete_lst(list);
+    
+
     TEST_END(test_name);
-    SEP;
-    NL;
 }

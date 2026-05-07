@@ -6,7 +6,7 @@
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:20:37 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/07 14:57:09 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/07 22:42:30 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,9 @@
 
 
 /*
-    ft_bzero.c
-    ft_calloc.c
-
-    ft_lstadd_back.c
-    ft_lstadd_front.c
-    ft_lstiter.c
-    ft_lstlast.c
-    ft_lstmap.c
-    
-    ft_memchr.c
-    ft_memcmp.c
-    ft_memcpy.c
-    ft_memmove.c
-    ft_memset.c
-    
     ft_putchar_fd.c
     ft_putendl_fd.c
     ft_putnbr_fd.c
-    ft_putstr_fd.c
 
     ft_strlcat.c
     ft_strlcpy.c
@@ -42,6 +26,12 @@
 int main(void)
 {
     //OK
+    //ft_memchr_assert();
+    //ft_memcmp_assert();
+    //ft_memcpy_assert();
+    // ft_calloc_assert();
+    // ft_bzero_assert();
+    // ft_memset_assert();
     // ft_striteri_assert();
     // ft_strmapi_assert();
     // str_classification_assert();
@@ -62,12 +52,18 @@ int main(void)
     // ft_lstdelone_assert();
     // ft_lstclear_assert();
     // ft_lstsize_assert();
-    ft_lstsize_assert();
-    //On progress
-    //ft_putchar_assert();
-    //ft_calloc_assert();
+    // ft_lstsize_assert();
+    // ft_lstlast_assert();
+    // ft_lstadd_back_assert();
+    // ft_lstadd_front_assert();
+    // ft_lstiter_assert();
+    // ft_lstmap_assert();
+    // On progress
+    // ft_putchar_assert();
     // ft_strlcat_assert();
-    // ft_strncmp_assert();
-
+    //ft_strncmp_assert();
+    //ft_putstr_assert();
+    ft_putendl_assert();
+    //ft_memove_assert();
     return (0);
 }
