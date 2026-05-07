@@ -15,7 +15,7 @@ void ft_lstnew_test(int test_nb, void *content)
         f = malloc_size;
     #endif
     #ifdef  __unix__
-        size_t (*f)(void *ptr)
+        size_t (*f)(void *ptr);
         f = malloc_usable_size;
     #endif
     printf("Test %d:\n", test_nb++);

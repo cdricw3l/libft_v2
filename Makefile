@@ -66,7 +66,7 @@ ifeq (${shell uname} , Darwin)
 	leaks -list  --atExit -- ./${ASSERT_NAME}
 else
 	${CC} ${GFLAGS} -lbsd ${OBJETS_ASSERT} -o ${ASSERT_NAME}
-	valgrind --leak-check=full --show-leak-kinds=all -s ./${ASSERT_NAME}
+	@valgrind --child-silent-after-fork=yes --leak-check=full --show-leak-kinds=all -s ./${ASSERT_NAME}
 endif
 
 clean:
@@ -82,13 +82,13 @@ re: fclean ${NAME}
 
 draft: ${NAME}
 ifeq (${shell uname}, Darwin)
-	gcc myLibftTester/draft.c -L. -lft -o draft
+	gcc ${GFLAGS} myLibftTester/draft.c -L. -lft -o draft
 else
-	gcc myLibftTester/draft.c -L. -lft -lbsd -o draft
+	gcc ${GFLAGS} myLibftTester/draft.c -L. -lft -lbsd -o draft
 endif
 
 t: draft
-	./draft
+	valgrind --leak-check=full --show-leak-kinds=all -s ./draft
 
 
 

@@ -5,65 +5,118 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 10:22:51 by cebouhad          #+#    #+#             */
-/*   Updated: 2026/05/05 17:58:03 by cebouhad         ###   ########.fr       */
+/*   Created: 2026/05/07 10:06:26 by cebouhad          #+#    #+#             */
+/*   Updated: 2026/05/07 13:56:16 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assertion.h"
 
-void print_memory_addr(char *s1, char *s2)
+static void *d_split(char ***split)
 {
-    printf("addr 1: %p\n", s1);
-    printf("addr 2: %p\n", s2);
+    char **ptr;
+    int i;
 
-    printf("Voici %d\n", strncmp(s1,s2, strlen(s1)));
-    printf("Voici %d\n", ft_strncmp(s1,s2, strlen(s1)));
-}
-
-void print_bit(size_t n, int bit)
-{
-
-    while (bit - 1 >= 0)
+    i = 0;
+    ptr = *split;
+    while (ptr[i])
     {
-        printf("%ld", (n >> bit) & 1);
-        bit--;
+        free(ptr[i]);
+        ptr[i] = NULL;
+        i++;
     }
-    printf("\n");
+    free(*split);
+    *split = NULL;
+    return (NULL);
 }
 
+void delete_str(void *ptr)
+{
+    char *str;
 
+    str = (char *)ptr;
+    free(str);
+    str = NULL;
+}
 
+t_list **create_list(char **split, int test_mode)
+{
+    char **ptr;
+    t_list **lst;
+    t_list *new_node;
+    int i;
+    
+    if (!split)
+        return(NULL);
+    lst = malloc(sizeof(t_list *));
+    if (!lst)
+        return (d_split(&split));
+    *lst = NULL;
+    ptr = split;
+    i = 0;
+    while (*ptr)
+    {
+        new_node = ft_lstnew(ft_strdup(*ptr));
+        if(i == 3 && test_mode == 1)
+        {
+            ft_lstdelone(new_node, delete_str);
+            new_node = NULL;
+        }
+        if(!new_node)
+        {
+            ft_lstclear(lst, delete_str);
+            free(lst);
+            d_split(&split);
+            return(NULL);
+        }
+        ft_lstadd_back(lst, new_node);
+        ptr++;
+        i++;
+    }
+    return(lst);
+}
+
+void print_lst(t_list *lst)
+{
+    int i;
+
+    i = 0;
+    while (lst)
+    {
+        NL;
+        printf("node %d addresse -> %p\n", i++,lst);
+        printf("content: %s\n", (char *)lst->content);
+        printf("next node addresse %p\n", lst->next);
+        lst = lst->next;
+    }
+    
+}
 
 int main(void)
 {
-    // char str1[] = {-10, -10, -50, 97, -10, -50, -10, 0};
-    // char set[] = {10, -50, 0};
-    // int r = strncmp(str1, set, 1);
+    t_list **list;
+    char **split;
 
-    // printf("r1u %d\n", (unsigned char)-10 - 10);
-    // printf("r2u %d\n", (unsigned char)10);
-    // printf("voici r: %d\n", strncmp("hello_berlin42", "hello_berlin", 1000));
-    // printf("voici r: %d\n", ft_strncmp("hello_berlin42", "hello_berlin", 1000));
+    split = ft_split("hello_berlin_comment_ca_va_?", '_');
+    if(!split)
+        return (1);
+    list = create_list(split, 0);
+    
+    if(!list)
+    {
+        printf("Erreur creation list\n");
+        free(list);
+        return (1);
+    }
+    else
+        print_lst(*list);
+        
+    ft_lstclear(list, delete_str);
 
-    // char *s1 = ft_strdup("hello");
-    // char *s2 = ft_strdup("Wello");
-    // print_memory_addr("hello", "Wllo");
-    // print_memory_addr(s1, s2);
-
-    // free(s1);
-    // free(s2);
-
-  
-
-    int r0;
-    size_t r1;
-
-    r0 = -100;
-    r1 = -100;
-
-    print_bit(r0, 64);
-    print_bit(r1, 64);
+    
+    assert(list && *list == NULL);
+    
+    d_split(&split);
+    //free(list);
     return (0);
-
 }

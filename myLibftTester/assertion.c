@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assertion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdric.b <cdric.b@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:20:37 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/06 19:43:37 by cdric.b          ###   ########.fr       */
+/*   Updated: 2026/05/07 14:57:09 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,9 @@
 
     ft_lstadd_back.c
     ft_lstadd_front.c
-    ft_lstclear.c
-    ft_lstdelone.c
     ft_lstiter.c
     ft_lstlast.c
     ft_lstmap.c
-    ft_lstnew.c
-    ft_lstsize.c
     
     ft_memchr.c
     ft_memcmp.c
@@ -46,27 +42,29 @@
 int main(void)
 {
     //OK
-    //ft_striteri_assert();
-    //ft_strmapi_assert();
-    //str_classification_assert();
-    //ft_atoi_assert();
+    // ft_striteri_assert();
+    // ft_strmapi_assert();
+    // str_classification_assert();
+    // ft_atoi_assert();
     // ft_itoa_assert();
-    //ft_strdup_assert();
-    //ft_split_assert();
-    //ft_strchr_assert();
-    //ft_strrchr_assert();
-    //ft_strjoin_assert();
-    //ft_strlen_assert();
-    //ft_strtrim_assert();
-    //ft_strnstr_assert();
-    //ft_tolower_assert();
-    //ft_toupper_assert();
-    //ft_substr_assert();
-    //ft_putchar_assert();
-    //ft_lst_new_assert();
-    ft_lstdelone_assert();
-    
+    // ft_strdup_assert();
+    // ft_split_assert();
+    // ft_strchr_assert();
+    // ft_strrchr_assert();
+    // ft_strjoin_assert();
+    // ft_strlen_assert();
+    // ft_strtrim_assert();
+    // ft_strnstr_assert();
+    // ft_tolower_assert();
+    // ft_toupper_assert();
+    // ft_substr_assert();
+    // ft_lst_new_assert();
+    // ft_lstdelone_assert();
+    // ft_lstclear_assert();
+    // ft_lstsize_assert();
+    ft_lstsize_assert();
     //On progress
+    //ft_putchar_assert();
     //ft_calloc_assert();
     // ft_strlcat_assert();
     // ft_strncmp_assert();

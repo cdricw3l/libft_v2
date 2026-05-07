@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lstlast_assert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/09 23:48:43 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/07 14:19:34 by cebouhad         ###   ########.fr       */
+/*   Created: 2026/05/07 15:00:40 by cebouhad          #+#    #+#             */
+/*   Updated: 2026/05/07 15:01:02 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "assertion.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void ft_lstlast_assert(void)
 {
-	t_list	*root;
-	t_list	*tmp;
-
-	if (!lst || !del)
-		return ;
-	root = *lst;
-	while (root)
-	{
-		tmp = root;
-		root = root->next;
-		del(tmp->content);
-		tmp->content = NULL;
-		free(tmp);
-		tmp = NULL;
-	}
-	*lst = NULL;
+    
 }

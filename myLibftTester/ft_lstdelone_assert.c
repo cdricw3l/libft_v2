@@ -1,137 +1,89 @@
 #include "assertion.h"
 
-void clean_split(void *ptr)
+
+
+void ft_lstdelone_test(int test_nb, void *content, void (*f)(void *ptr))
 {
-    char ***split;
-    int i;
+    t_list *node;
+    pid_t frk;
+    int stat;
 
-    split = (char ***)ptr;
-    i = 0;
-    while ((*split)[i])
+    printf("Test %d:\n", test_nb);
+    if (!content || !f)
     {
-        free((*split)[i]);
-        (*split)[i] = NULL;
-        i++;
-    }
-    free((*split));
-    (*split) = NULL;
-}
-
-void clean_tab(void *ptr)
-{
-    int ***data;
-    int i;
-
-    data = (int ***)ptr;
-    i = 0;
-    while ((*data)[i])
-    {
-        free((*data)[i]);
-        (*data)[i] = NULL;
-        i++;
-    }
-    free(*data);
-    *data = NULL;
-}
-
-int **create_arr(int nb, int term)
-{
-    int i;
-    int j;
-    int **tab;
-    int *arr;
-
-    tab = malloc(sizeof(int **) * (nb + 1));
-    if (!tab)
-        return (NULL);
-    i = 0;
-    assert(nb == 5);
-    while (i < nb)
-    {
-        arr = malloc(sizeof(int *) * term);
-        if (!arr)
+        /*
+            nul protection check
+        */
+        frk = fork();
+        if( frk < 0)
         {
-            j = 0;
-            while (j < i)
-            {
-                free(tab[j]);
-                tab[j] = NULL;
-                j++;
-            }
-            return (NULL);
+            printf("Error fork in %s", __func__);
+            return ;
         }
-        j = 0;
-        while (j < term)
+        if(frk == 0)
         {
-            arr[j] = j;
-            j++;
+            ft_lstdelone(content, f);
+            exit(0);
         }
-        tab[i] = arr;
-        i++;
+        else
+        {
+            waitpid(frk, &stat, 0);
+            if(stat == 0)
+                printf("\tCheck null protection -> "TEST_OK"\n");
+            else
+                printf("\tCheck null protection -> "TEST_NOK"\n");
+            return ;
+        }
     }
-    tab[i] = NULL;
-    return (tab);
-}
-
-void print_tab(int **arr, int terme)
-{
-    int i;
-    int j;
-
-    i = 0;
-    assert(arr && arr[0]);
-    while (arr[i])
+    else
     {
-
-        printf("tab %d: ", i);
-        j = 0;
-        while (j < terme)
-            printf("%d ", arr[i][j++]);
-        NL;
-        i++;
+        node = ft_lstnew(&content);
+        if(!node)
+        {
+            printf("Error creation node test %d\n", test_nb);
+            f(content);
+            return ;
+        }
+        ft_lstdelone(node, f);
+        if (!content)
+            printf("\tDelete content node"TEST_OK"\n");
+        else
+            printf("\tDelete content node"TEST_NOK"\n");
     }
     
 }
 
 void ft_lstdelone_assert(void)
 {
-
+    char *test_name = "ft_lstdelone";
+    TEST_STAR(test_name);
     char **split;
     int **data;
-    t_list *node;
+    int test_nb;
 
-    //test 1
-
+    //Test 1
+    test_nb = 1;
     split = ft_split("hello_berlin_comment_ca_va?", '_');
     if(!split)
-        return ;
-    node = ft_lstnew(&split);
-    if(!node)
     {
-        clean_split(split);
+        printf("Error split creation in ft_lstdelone_assert\n");
         return ;
     }
+    ft_lstdelone_test(test_nb++, split, delete_split);
 
-    ft_lstdelone(node, clean_split);
-    if (!split)
-        printf("Delete content node test %d"TEST_OK"\n", 1);
-    else
-        printf("Delete content node test %d"TEST_NOK"\n", 1);
-        
-
+    //Test 2
     data = create_arr(5, 5);
     if (!data)
     {
-        printf("error data\n");
+        printf("Error split creation in ft_lstdelone_assert\n");
         return ;
     }
-    printf("tableau creer avec succes\n");
-    node->content = &data;
-    print_tab(*(int ***)((node->content)), 5);
-    ft_lstdelone(node, clean_tab);
-    if (!data )
-        printf("Delete content node test %d"TEST_OK"\n", 2);
-    else
-        printf("Delete content node test %d"TEST_NOK"\n", 2);
-        
+    ft_lstdelone_test(test_nb++, data, delete_tab);
+    
+    //Test 3
+    ft_lstdelone_test(test_nb++, NULL, NULL);
+
+    TEST_END(test_name);
+    SEP;
+    NL;
 }
