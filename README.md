@@ -40,3 +40,10 @@ Pour supprimer tout les fichier objects la librairy static et relancer la compil
 make re
 ```
 
+## Resources
+
+* RTFM
+* www.google.com
+* https://www.geeksforgeeks.org
+* https://www.gnu.org/software/make/manual
+* https://stackoverflow.com
