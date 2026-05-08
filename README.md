@@ -14,13 +14,11 @@ Pour compiler la librairy:
 
 ```bash
 make
-
 ```
 or
 
 ```bash
 make libft
-
 ```
 or
 
