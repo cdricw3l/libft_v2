@@ -10,7 +10,7 @@ Comme les apprentis creait leurs propre boite a outils dans les metier manuel, l
 
 ## Instructions
 
-Pour compiler la librairy:
+* Pour compiler la librairy et generer la librairie static:
 
 ```bash
 make
