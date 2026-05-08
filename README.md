@@ -42,7 +42,7 @@ make re
 
 ## Resources
 
-* RTFM
+* https://linux.die.net/man/ 
 * www.google.com
 * https://www.geeksforgeeks.org
 * https://www.gnu.org/software/make/manual
