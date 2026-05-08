@@ -48,10 +48,12 @@ SRCS=	ft_atoi.c \
 
 OBJETS_SRCS = ${SRCS:.c=.o}
 
-all: ${NAME}
+
 
 %.o:%.c
 	${CC} -c  ${GFLAGS} $^ -o $@
+
+all: ${NAME}
 
 ${NAME}: ${OBJETS_SRCS}
 	${AR} ${NAME} ${OBJETS_SRCS}

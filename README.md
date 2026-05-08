@@ -10,7 +10,7 @@ Comme les apprentis creait leurs propre boite a outils dans les metier manuel, l
 
 ## Instructions
 
-* Pour compiler la librairy et generer la librairie static:
+Pour compiler la librairy et generer la librairie static:
 
 ```bash
 make
@@ -24,5 +24,19 @@ or
 
 ```bash
 make all
+```
+Pour supprimer tout les fichier objects:
+```bash
+make clean
+```
+
+Pour supprimer tout les fichier objects et la librairy static:
+```bash
+make fclean
+```
+
+Pour supprimer tout les fichier objects la librairy static et relancer la compilation:
+```bash
+make re
 ```
 
