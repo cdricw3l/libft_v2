@@ -4,13 +4,15 @@
 
 ## Description
 
-libft est un project qui vise a recreer certaine fonction de la librairie libc ainsi que des fonction additionelle.
-C'est un project qui permet de travailler les fondamentaux de la programmation, daborder la manipulation de memoire, des chaines de charactere, des structure sous forme de liste chaine.
-Comme les apprentis creait leurs propre boite a outils dans les metier manuel, libft pose les base d'une boite a outils qui sera utils tout au long du cursus de 42.
+Libft is a project aimed at recreating certain functions from the libc standard library, as well as additional utility functions.
+
+It is a project that allows students to master the fundamentals of programming, covering memory manipulation, string handling, and data structures like linked lists.
+
+Just as apprentices in manual trades would craft their own personalized toolboxes, Libft establishes the foundation of a toolkit that will be essential throughout the entire 42 curriculum.
 
 ## Instructions
 
-Pour compiler la librairy et generer la librairie static:
+To compile the library and generate the static library.
 
 ```bash
 make
@@ -25,17 +27,17 @@ or
 ```bash
 make all
 ```
-Pour supprimer tout les fichier objects:
+To delete all object files
 ```bash
 make clean
 ```
 
-Pour supprimer tout les fichier objects et la librairy static:
+To delete all object files and the static library:
 ```bash
 make fclean
 ```
 
-Pour supprimer tout les fichier objects la librairy static et relancer la compilation:
+To delete all object files, the static library and compile the library:
 ```bash
 make re
 ```
