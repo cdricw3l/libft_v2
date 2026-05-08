@@ -12,19 +12,19 @@ Comme les apprentis creait leurs propre boite a outils dans les metier manuel, l
 
 Pour compiler la librairy:
 
-```
+```bash
 make
 
 ```
 or
 
-```
+```bash
 make libft
 
 ```
 or
 
-```
+```bash
 make all
 ```
 
