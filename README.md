@@ -10,4 +10,21 @@ Comme les apprentis creait leurs propre boite a outils dans les metier manuel, l
 
 ## Instructions
 
+Pour compiler la librairy:
+
+```
+make
+
+```
+or
+
+```
+make libft
+
+```
+or
+
+```
+make all
+```
 
