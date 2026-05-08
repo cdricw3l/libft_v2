@@ -6,7 +6,7 @@
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 22:06:04 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/05 11:35:21 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/08 15:48:55 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)ptr);
 		ptr++;
 	}
-	if (*ptr == c)
+	if ((unsigned char)(*ptr) == (unsigned char)c)
 		return ((char *)ptr);
 	return (NULL);
 }

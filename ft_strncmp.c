@@ -6,7 +6,7 @@
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 17:02:35 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/07 21:00:27 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/08 14:47:41 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,21 @@
 
 int	ft_strncmp(const char *p1, const char *p2, size_t n)
 {
-	size_t	i;
-	char *s1;
-	char *s2;
+	size_t			i;
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-	s1 = (char *)p1;
-	s2 = (char *)p2;
+	s1 = (unsigned char *)p1;
+	s2 = (unsigned char *)p2;
 	i = 0;
 	if (n == 0)
 		return (0);
 	while ((s1[i] || s2[i]) && i < n)
 	{
-		/*
-			Why unsigned char ? because the original cast as unsigned char.
-
-			if s1[i] = -10 and s2[i] = 10 strnmcmp return 246 - 10 -> 236
-
-			-10: 1111111111110110
-			246: 0000000011110110
-		
-		*/
-		/*
-			2nd point:
-			in unix systeme,
-			when the fonction strncmp compare read only string, she return -1 or 1 else she return the difference between s1[i] and s2[i]
-
-		*/
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		if (s1[i] < s2[i])
+			return (-1);
+		if (s1[i] > s2[i])
+			return (1);
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: cebouhad <cebouhad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 22:22:14 by cdric.b           #+#    #+#             */
-/*   Updated: 2026/05/05 10:23:57 by cebouhad         ###   ########.fr       */
+/*   Updated: 2026/05/08 15:50:23 by cebouhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 	char			*new_str;
 
-	if (!s)
+	if (!s | !f)
 		return (NULL);
-	if (!f)
-		return (ft_strdup(s));
 	new_str = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!new_str)
 		return (NULL);
