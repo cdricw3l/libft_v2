@@ -44,8 +44,12 @@ SRCS=	ft_atoi.c \
 		ft_lstlast.c \
 		ft_lstmap.c \
 		ft_lstnew.c \
-		ft_lstsize.c
-
+		ft_lstsize.c \
+		ft_split_clean.c \
+		ft_split_clean.c \
+		ft_split_len.c \
+		ft_split_display.c
+		
 OBJETS_SRCS = ${SRCS:.c=.o}
 
 
@@ -66,5 +70,11 @@ fclean: clean
 
 
 re: fclean ${NAME}
+
+COM= libft_add
+git: fclean
+	git add .
+	git commit -m $(COM)
+	git push origin %$(shell git branch --show-current)
 
 .PHONY: re all clean fclean 
