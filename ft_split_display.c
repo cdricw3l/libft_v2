@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	**ft_split_display(char **split, int fd)
+void	ft_split_display(char **split, int fd)
 {
 	char	**ptr;
 
