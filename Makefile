@@ -75,6 +75,6 @@ COM= libft_add
 git: fclean
 	git add .
 	git commit -m $(COM)
-	git push origin %$(shell git branch --show-current)
+	git push origin $(shell git branch --show-current)
 
 .PHONY: re all clean fclean 
