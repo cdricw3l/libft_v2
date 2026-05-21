@@ -48,8 +48,10 @@ SRCS=	ft_atoi.c \
 		ft_split_clean.c \
 		ft_split_clean.c \
 		ft_split_len.c \
-		ft_split_display.c
-		
+		ft_split_display.c \
+		ft_strlen_longest.c \
+		ft_atoi_long_long.c
+
 OBJETS_SRCS = ${SRCS:.c=.o}
 
 
